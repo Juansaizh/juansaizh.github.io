@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Juan Saiz · Technical Artist</title>
+    <meta name="description" content="Juan Saiz, Technical Artist & Pipeline Developer. One connected pipeline of tools in MaxScript, Python and C# across 3ds Max, Unity and Deadline." />
+    <meta name="theme-color" content="#0b0c0f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#stages">Skip to projects</a>
+
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a href="#top" class="brand" id="brand">Juan Saiz</a>
+        <nav id="stage-nav" class="stage-nav" aria-label="Pipeline stages"></nav>
+        <a href="#about" class="topbar-cta">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="top" class="hero">
+        <div class="wrap">
+          <p class="eyebrow" id="hero-kicker"></p>
+          <h1 id="hero-title"></h1>
+          <p class="hero-text" id="hero-text"></p>
+        </div>
+
+        <div class="wrap">
+          <ol class="pipeline" id="pipeline" aria-label="Pipeline overview"></ol>
+        </div>
+
+        <div class="wrap">
+          <ul class="impact" id="impact" aria-label="Impact"></ul>
+        </div>
+      </section>
+
+      <div id="stages"></div>
+
+      <section id="about" class="about">
+        <div class="wrap about-inner">
+          <p class="eyebrow">About</p>
+          <h2>Artist first, then engineer.</h2>
+          <p id="about-text" class="about-text"></p>
+          <div id="contact" class="contact"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap"><span id="footer-name"></span> · © <span id="year"></span></div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
