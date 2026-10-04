@@ -1,0 +1,188 @@
+// Portfolio content. Edit this file to change texts, order or media.
+// Every `media` path is relative to /assets. If the file does not exist yet,
+// the page shows a placeholder with the expected filename.
+
+window.PORTFOLIO = {
+  person: {
+    name: "Juan Saiz",
+    role: "Technical Artist & Pipeline Developer",
+    location: "Valencia, Spain",
+    email: "juansaizn@gmail.com",
+    linkedin: "https://www.linkedin.com/in/juan-saiz",
+    cv: "assets/Juan_Saiz_CV.pdf",
+  },
+
+  hero: {
+    kicker: "Technical Artist & Pipeline Developer",
+    title: "I build the pipeline between the artist and the real‑time app.",
+    text:
+      "Tools in MaxScript, Python and C# that connect 3ds Max, Unity and the render farm, so a team of artists can ship interactive 3D for web and mobile without the busywork.",
+  },
+
+  impact: [
+    { value: "2 h → 5 min", label: "to edit, save and export 40+ scenes", tool: "Quick Scene Switcher" },
+    { value: "up to 6 h", label: "saved per weekly project on the render farm", tool: "Render Farm Post‑Process" },
+    { value: "up to 30%", label: "less time placing assets in Unity", tool: "Placement Tool" },
+    { value: "12 tools", label: "one connected pipeline", tool: "3ds Max · Unity · Deadline" },
+  ],
+
+  output: { name: "Real‑time app", tools: "WebGL · Mobile" },
+
+  stages: [
+    {
+      id: "author",
+      name: "Author",
+      tagline: "Clean, organized 3ds Max scenes a whole team can work on.",
+      tools: ["3ds Max", "Python", "Qt", "MaxScript"],
+      featured: {
+        name: "MultiMaterial Editor",
+        stack: ["3ds Max", "Python", "Qt"],
+        lead:
+          "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
+        compare: {
+          before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI" },
+          after: { media: "video/mme-upgraded-ui.mp4", label: "MultiMaterial Editor" },
+        },
+        features: [
+          { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "video/mme-drag-reorder.mp4" },
+          { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "video/mme-auto-renumber.mp4" },
+          { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "video/mme-name-link.mp4" },
+          { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "video/mme-auto-apply.mp4" },
+          { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "video/mme-fix-duplicates.mp4" },
+          { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "video/mme-slate-access.mp4" },
+          { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "video/mme-fast-iteration.mp4" },
+        ],
+      },
+      support: [
+        {
+          name: "Quick Scene Switcher",
+          stack: ["3ds Max", "Python", "Qt"],
+          text:
+            "Dockable panel to open and manage many scenes in a single 3ds Max instance, inspired by the Unity Editor. Edit 40+ scenes of a team project at once, then batch save and export with control.",
+          impact: "2 h → 5 min",
+          bullets: ["Drag & drop files or browse for them", "Batch save many scenes at once", "Batch FBX export many scenes at once", "Search, filter and sort the scene list"],
+          media: "video/qss-ui.mp4",
+        },
+        {
+          name: "Door & Window Generator",
+          stack: ["3ds Max", "MaxScript", "Qt"],
+          text: "Analyzes the model topology to place doors, windows and curtains automatically, with controls to iterate fast.",
+          bullets: ["Detects window orientation", "Picks the most suitable object", "Fits each object precisely"],
+          media: "video/dwg-ui.mp4",
+        },
+      ],
+    },
+
+    {
+      id: "bake-export",
+      name: "Bake & Export",
+      tagline: "Lighting baked in 3ds Max, delivered as lightweight real‑time assets.",
+      tools: ["3ds Max", "MaxScript", "C#"],
+      featured: {
+        name: "Lightmapping & Web Exporter",
+        stack: ["3ds Max", "MaxScript", "C#"],
+        lead:
+          "An in‑house solution built to control the final result and cut dependencies on third‑party tools. Custom materials, light baking and glTF export for real‑time visualization, all inside 3ds Max.",
+        media: "video/lwe-ui.mp4",
+        features: [
+          { title: "Lightmap baking", text: "Full control over texel density and an optimal texture atlas.", media: "video/lwe-lightmaps.mp4" },
+          { title: "Furniture & camera placement", text: "Places furniture and cameras for the interactive app and writes them to JSON.", media: "video/lwe-placement-json.mp4" },
+          { title: "Tagging with auto‑tag", text: "Tag assets by hand or let auto‑tagging do it for you.", media: "video/lwe-tagging.mp4" },
+          { title: "Custom glTF exporter", text: "Exports glTF, lightmaps and JSON, including custom material attributes.", media: "video/lwe-gltf-export.mp4" },
+        ],
+      },
+      support: [
+        {
+          name: "OneClick Export",
+          stack: ["3ds Max", "MaxScript", "Qt"],
+          text: "Exports hundreds of FBX files, fast, straight into the Unity project.",
+          bullets: ["Connects to the Unity export path on its own", "Batch export based on the scene selection", "Scene validation: detects and fixes scene errors"],
+          media: "video/oce-ui.mp4",
+          features: [
+            { title: "Unity export path", text: "Finds the Unity project path and exports there directly.", media: "video/oce-unity-path.mp4" },
+            { title: "Batch export", text: "Exports every selected object as its own FBX.", media: "video/oce-batch-export.mp4" },
+            { title: "Scene validation", text: "Detects scene errors and fixes them before exporting.", media: "video/oce-validation.mp4" },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "assemble",
+      name: "Assemble",
+      tagline: "Unity scenes built from rules instead of by hand.",
+      tools: ["Unity", "C#"],
+      featured: {
+        name: "Setup Location Scenes",
+        stack: ["Unity", "C#"],
+        lead:
+          "Sets up location scenes automatically: it analyzes the model topology and places assets, cameras and materials based on multiple criteria.",
+        media: "video/sls-ui.mp4",
+        features: [
+          { title: "Topology analysis", text: "Reads the model to decide where each element belongs.", media: "video/sls-topology.mp4" },
+          { title: "Asset placement", text: "Places multiple assets from configurable criteria.", media: "video/sls-assets.mp4" },
+          { title: "Cameras", text: "Positions the cameras of the interactive app automatically.", media: "video/sls-cameras.mp4" },
+          { title: "Materials", text: "Assigns materials by rule across the whole scene.", media: "video/sls-materials.mp4" },
+        ],
+      },
+      support: [
+        {
+          name: "Placement Tool",
+          stack: ["Unity", "C#"],
+          text: "Helps artists place elements quickly: depending on the selected asset, it snaps to floors, walls or ceilings.",
+          impact: "up to 30% less time",
+          media: "video/pt-ui.mp4",
+        },
+        {
+          name: "Lazy Tagger",
+          stack: ["Unity", "C#"],
+          text: "Tags every asset in the scene from multiple rules, then generates and exports a JSON with all the information.",
+          media: "video/lt-ui.mp4",
+        },
+        {
+          name: "Kitchen Creator",
+          stack: ["Unity", "C#"],
+          text: "Modular generator to customize kitchen furniture.",
+          media: "video/kc-ui.mp4",
+        },
+      ],
+    },
+
+    {
+      id: "bake-ship",
+      name: "Bake & Ship",
+      tagline: "Dozens of scenes baked, processed and released without babysitting.",
+      tools: ["Unity", "Deadline", "Python", "PowerShell"],
+      featured: {
+        name: "Render Farm Post‑Process",
+        stack: ["Deadline", "Python", "PowerShell"],
+        lead:
+          "Handles all post‑render processing on the render farm, so finished renders become release‑ready files without manual steps.",
+        impact: "up to 6 h saved per weekly project",
+        media: "video/rfp-ui.mp4",
+        features: [
+          { title: "Distributed post‑production", text: "Spreads post‑production and BasisU compression across the farm.", media: "video/rfp-distributed.mp4" },
+          { title: "Self‑healing jobs", text: "Centralized error handling that relaunches failed tasks automatically.", media: "video/rfp-errors.mp4" },
+          { title: "Release folders", text: "Organizes the output files into release folders.", media: "video/rfp-release.mp4" },
+        ],
+      },
+      support: [
+        {
+          name: "Setup Baking Scenes",
+          stack: ["Unity", "C#"],
+          text: "Automation tool that sets up multiple baking scenes at once for a single project.",
+          media: "video/sbs-ui.mp4",
+        },
+        {
+          name: "Batch Baking",
+          stack: ["Unity", "C#"],
+          text: "Bakes multiple scenes at once and exports each one to its own folder, with extra control options.",
+          media: "video/bb-ui.mp4",
+        },
+      ],
+    },
+  ],
+
+  about:
+    "Lead Technical Artist at Custhome, where I lead a team of 9 artists and keep the pipeline running from 3ds Max to WebGL and mobile. I came from 3D art, so I build tools the way artists want to use them: I remove the busywork and connect every piece of software in the studio so the team can focus on the creative side.",
+};
