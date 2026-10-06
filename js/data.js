@@ -25,7 +25,7 @@ window.PORTFOLIO = {
 
   impact: [
     { value: "2 h → 5 min", label: "to edit, save and export 40+ scenes", tool: "Quick Scene Switcher" },
-    { value: "up to 6 h", label: "saved per weekly project on the render farm", tool: "Render Farm Post‑Process" },
+    { value: "up to 6 h", label: "saved per project on the render farm, across 110+ projects a year", tool: "Render Farm Post‑Process" },
     { value: "up to 30%", label: "less time placing assets in Unity", tool: "Placement Tool" },
     { value: "12 tools", label: "one connected pipeline", tool: "3ds Max · Unity · Deadline" },
   ],
@@ -191,7 +191,7 @@ window.PORTFOLIO = {
         stack: ["Deadline", "Python", "PowerShell"],
         lead:
           "Handles all post‑render processing on the render farm, so finished renders become release‑ready files without manual steps.",
-        impact: "up to 6 h saved per weekly project",
+        impact: "up to 6 h saved per project · 110+ projects a year",
         media: "video/rfp-ui.mp4",
         features: [
           { title: "Distributed post‑production", text: "Spreads post‑production and BasisU compression across the farm.", media: "video/rfp-distributed.mp4" },
