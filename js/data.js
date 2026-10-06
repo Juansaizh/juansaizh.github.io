@@ -79,7 +79,11 @@ window.PORTFOLIO = {
           stack: ["3ds Max", "MaxScript", "Qt"],
           text: "Analyzes the model topology to place doors, windows and curtains automatically, with controls to iterate fast.",
           bullets: ["Detects window orientation", "Picks the most suitable object", "Fits each object precisely"],
-          media: "video/dwg-ui.mp4",
+          media: "img/dwg-ui.png",
+          ratio: "322 / 262",
+          features: [
+            { title: "Merges missing base objects", text: "When the base objects it needs are missing from the scene, it offers to merge them in.", media: "img/dwg-merge.png", ratio: "427 / 220" },
+          ],
         },
       ],
     },
@@ -94,7 +98,8 @@ window.PORTFOLIO = {
         stack: ["3ds Max", "MaxScript", "C#"],
         lead:
           "An in‑house solution built to control the final result and cut dependencies on third‑party tools. Custom materials, light baking and glTF export for real‑time visualization, all inside 3ds Max.",
-        media: "video/lwe-ui.mp4",
+        media: "img/lwe-ui.png",
+        ratio: "510 / 585",
         features: [
           { title: "Lightmap baking", text: "Full control over texel density and an optimal texture atlas.", media: "video/lwe-lightmaps.mp4" },
           { title: "Furniture & camera placement", text: "Places furniture and cameras for the interactive app and writes them to JSON.", media: "video/lwe-placement-json.mp4" },
@@ -112,7 +117,7 @@ window.PORTFOLIO = {
           features: [
             { title: "Unity export path", text: "Finds the Unity project path and exports there directly.", media: "video/oce-unity-path.mp4" },
             { title: "Batch export", text: "Exports every selected object as its own FBX.", media: "video/oce-batch-export.mp4" },
-            { title: "Scene validation", text: "Detects scene errors and fixes them before exporting.", media: "video/oce-validation.mp4" },
+            { title: "Scene validation", text: "Detects scene errors and fixes them before exporting.", media: "img/oce-validation.png", ratio: "754 / 939" },
           ],
         },
       ],
