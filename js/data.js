@@ -82,7 +82,7 @@ window.PORTFOLIO = {
           impact: "2 h → 5 min",
           bullets: ["Drag & drop files or browse for them", "Batch save many scenes at once", "Batch FBX export many scenes at once", "Search, filter and sort the scene list"],
           media: "img/qss-ui.png",
-          ratio: "1520 / 1752",
+          ratio: "1520 / 2144",
           features: [
             { title: "Drag & drop scenes", text: "Drop .max files or whole folders onto the list to load them as scenes.", media: "img/qss-drag-drop.png", ratio: "1456 / 1020" },
             { title: "Search, filter and sort", text: "Wildcards and sort commands narrow 40+ scenes down in a keystroke.", media: "img/qss-filter.png", ratio: "1456 / 928" },
