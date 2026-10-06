@@ -36,22 +36,22 @@ window.PORTFOLIO = {
     {
       id: "author",
       name: "Author",
-      tagline: "From a PDF floor plan to a clean, bake‑ready 3ds Max flat.",
+      tagline: "From a PDF floor plan to a clean, bake‑ready 3ds Max interior.",
       tools: ["3ds Max", "AI · MCP", "MaxScript", "Python"],
       featured: {
-        name: "Floor Plan to Flat",
+        name: "Floor Plan to 3D",
         stack: ["AI", "MCP", "3ds Max", "MaxScript", "Python"],
         lead:
-          "Five connected tools that turn a PDF floor plan into a bake‑ready 3ds Max flat. An AI skill draws the splines, and every step hands its result to the next one.",
-        media: "video/fptf-overview.mp4",
-        impact: "50 min → 10 min per flat",
+          "Five connected tools that turn a PDF floor plan into a bake‑ready 3ds Max interior. An AI skill draws the splines, and every step hands its result to the next one.",
+        media: "video/fp3d-overview.mp4",
+        impact: "50 min → 10 min per floor plan",
         featuresTitle: "Step by step.",
         features: [
-          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors and ceiling as named splines. In early production use.", media: "img/fptf-pdf-splines.png" },
-          { title: "BuildFlat", text: "Extrudes the walls in height segments and builds the ceiling, floors and terrace borders from the splines.", media: "img/fptf-buildflat.png" },
+          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors and ceiling as named splines. In early production use.", media: "img/fp3d-pdf-splines.png" },
+          { title: "Shell Builder", text: "Extrudes the walls in height segments and builds the ceiling, floors and terrace borders from the splines.", media: "img/fp3d-shell-builder.png" },
           { title: "Door & Window Generator", text: "Places, orients and instances doors, windows and curtains, and fits their geometry to each opening.", media: "img/dwg-ui.png", ratio: "322 / 262" },
-          { title: "MultiMaterial Editor", text: "Sets up the flat's materials in one organized multimaterial before unwrapping.", media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280" },
-          { title: "UnwrapAll", text: "Unwraps UVs by object type, packs them with UV‑Packer and leaves the scene ready to bake. Duplex flats included.", media: "img/fptf-unwrapall.png" },
+          { title: "MultiMaterial Editor", text: "Sets up the scene's materials in one organized multimaterial before unwrapping.", media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280" },
+          { title: "UnwrapAll", text: "Unwraps UVs by object type, packs them with UV‑Packer and leaves the scene ready to bake. Duplex layouts included.", media: "img/fp3d-unwrapall.png" },
         ],
       },
       support: [
