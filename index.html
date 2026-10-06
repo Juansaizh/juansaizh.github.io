@@ -21,7 +21,7 @@
       <div class="wrap topbar-inner">
         <a href="#top" class="brand" id="brand">Juan Saiz</a>
         <nav id="stage-nav" class="stage-nav" aria-label="Pipeline stages"></nav>
-        <a href="#about" class="topbar-cta">Contact</a>
+        <a href="#contact" class="topbar-cta">Contact</a>
       </div>
     </header>
 
@@ -31,6 +31,7 @@
           <p class="eyebrow" id="hero-kicker"></p>
           <h1 id="hero-title"></h1>
           <p class="hero-text" id="hero-text"></p>
+          <a class="btn hero-cta" href="#contact">Get in touch</a>
         </div>
 
         <div class="wrap">
@@ -49,7 +50,19 @@
           <p class="eyebrow">About</p>
           <h2>Artist first, then engineer.</h2>
           <p id="about-text" class="about-text"></p>
-          <div id="contact" class="contact"></div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-title">
+        <div class="wrap contact-inner">
+          <h2 id="contact-title" class="contact-title"></h2>
+          <!-- Clic en el email o en Copy: se copia al portapapeles (mucha gente no usa app de correo). -->
+          <div class="email-row">
+            <button type="button" class="email" id="email" aria-describedby="copy-status"></button>
+            <button type="button" class="copy-btn" id="copy-btn">Copy</button>
+          </div>
+          <div id="contact-links" class="contact-links"></div>
+          <p id="copy-status" class="sr-only" aria-live="polite"></p>
         </div>
       </section>
     </main>

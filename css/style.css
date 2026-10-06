@@ -351,11 +351,37 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- About ---------- */
 
-.about { padding: clamp(120px, 16vw, 200px) 0 clamp(96px, 12vw, 160px); }
+.about { padding: clamp(120px, 16vw, 200px) 0 0; }
 .about-inner { display: grid; gap: 18px; max-width: 860px; }
 .about h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
 .about-text { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); }
-.contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.hero-cta { margin-top: 32px; background: var(--surface-2); border-color: transparent; }
+.hero-cta:hover { background: var(--line); }
+
+/* ---------- Contact ---------- */
+
+.contact { padding: clamp(96px, 12vw, 160px) 0; }
+.contact-inner { display: grid; gap: 20px; justify-items: start; }
+.contact-title { font-size: clamp(28px, 4.4vw, 52px); font-weight: 700; max-width: 22ch; }
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.email {
+  padding: 0; border: 0; background: none; cursor: pointer;
+  font: 600 clamp(26px, 4.4vw, 52px)/1.15 var(--font); letter-spacing: -0.02em;
+  color: var(--text); text-align: left; overflow-wrap: anywhere;
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.18em;
+  text-decoration-color: var(--faint);
+  transition: text-decoration-color .2s;
+}
+.email:hover { text-decoration-color: var(--text); }
+.email.is-copied { text-decoration-color: transparent; }
+.copy-btn {
+  min-height: 40px; padding: 0 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: transparent; color: var(--muted);
+  font: 500 14px/1 var(--font); cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.copy-btn:hover { background: var(--surface-2); color: var(--text); }
+.contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 .btn {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
   border-radius: 999px; border: 1px solid var(--line);
