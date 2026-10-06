@@ -212,12 +212,23 @@
   }
 
   function featuredBlock(p) {
+    // Antes/después: cada columna tan ancha como la proporción de su captura, así las dos
+    // tienen la misma altura sin recortar ninguna.
+    const ratioNum = (r) => {
+      const [w, hgt] = String(r).split("/").map(Number);
+      return w / (hgt || 1);
+    };
+    const beforeRatio = p.compare && (p.compare.before.ratio || p.compare.after.ratio);
+    const afterRatio = p.compare && (p.compare.after.ratio || p.compare.before.ratio);
     const hero = p.compare
       ? h(
           "div",
-          { class: "compare" },
-          h("div", { class: "compare-item" }, h("span", { class: "compare-tag before" }, "Before"), media(p.compare.before.media, p.compare.before.label, { ratio: p.compare.before.ratio || p.compare.after.ratio })),
-          h("div", { class: "compare-item" }, h("span", { class: "compare-tag after" }, "After"), media(p.compare.after.media, p.compare.after.label, { ratio: p.compare.after.ratio || p.compare.before.ratio }))
+          {
+            class: "compare",
+            style: beforeRatio && afterRatio ? `--cols: ${ratioNum(beforeRatio).toFixed(4)}fr ${ratioNum(afterRatio).toFixed(4)}fr` : null,
+          },
+          h("div", { class: "compare-item" }, h("span", { class: "compare-tag before" }, "Before"), media(p.compare.before.media, p.compare.before.label, { ratio: beforeRatio })),
+          h("div", { class: "compare-item" }, h("span", { class: "compare-tag after" }, "After"), media(p.compare.after.media, p.compare.after.label, { ratio: afterRatio }))
         )
       : media(p.media, `${p.name}: overview`, { ratio: p.ratio });
 

@@ -202,7 +202,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .featured-media > .media { border-radius: 24px; }
 
 .compare { display: grid; gap: 16px; }
-@media (min-width: 720px) { .compare { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 720px) { .compare { grid-template-columns: var(--cols, 1fr 1fr); align-items: end; } }
 .compare-item { display: grid; gap: 10px; justify-items: start; align-content: start; }
 .compare-item .media { justify-self: stretch; }
 .compare-item .media { border-radius: 20px; }
