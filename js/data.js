@@ -192,11 +192,11 @@ window.PORTFOLIO = {
         lead:
           "Handles all post‑render processing on the render farm, so finished renders become release‑ready files without manual steps.",
         impact: "up to 6 h saved per project",
-        media: "video/rfp-ui.mp4",
+        media: "img/rfp-ui.png", ratio: "2955 / 3918",
         features: [
-          { title: "Distributed post‑production", text: "Spreads post‑production and BasisU compression across the farm.", media: "video/rfp-distributed.mp4" },
-          { title: "Self‑healing jobs", text: "Centralized error handling that relaunches failed tasks automatically.", media: "video/rfp-errors.mp4" },
-          { title: "Release folders", text: "Organizes the output files into release folders.", media: "video/rfp-release.mp4" },
+          { title: "Distributed post‑production", text: "Spreads post‑production and BasisU compression across the farm.", media: "img/rfp-distributed.png", ratio: "3201 / 3474" },
+          { title: "Self‑healing jobs", text: "Centralized error handling that relaunches failed tasks automatically.", media: "img/rfp-errors.png", ratio: "2339 / 1774" },
+          { title: "Release folders", text: "Organizes the output files into release folders.", media: "img/rfp-release.png", ratio: "1878 / 1996" },
         ],
       },
       support: [
