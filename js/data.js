@@ -61,7 +61,7 @@ window.PORTFOLIO = {
           text:
             "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
           compare: {
-            before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "397 / 870" },
+            before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "470 / 487" },
             after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
           },
           features: [
