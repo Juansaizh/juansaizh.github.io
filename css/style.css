@@ -296,14 +296,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   flex: 0 0 auto;
   width: min(calc(var(--slide-h) * var(--ar)), calc(100vw - 2 * var(--gutter)));
   scroll-snap-align: start;
-  background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--radius); overflow: hidden;
 }
-.slide .media { aspect-ratio: auto; height: var(--slide-h); border: 0; border-radius: 0; border-bottom: 1px solid var(--line); }
-.slide-body { padding: 18px 20px 22px; display: grid; gap: 6px; }
-.slide-num { font: 500 12px/1 var(--mono); color: var(--c); }
-.slide h4 { font-size: 19px; font-weight: 600; }
-.slide p { color: var(--muted); font-size: 15px; line-height: 1.5; }
+/* Como en apple.com: sin tarjeta, solo la captura enmarcada y el texto debajo sobre el fondo de la web. */
+.slide .media { aspect-ratio: auto; height: var(--slide-h); border-radius: var(--radius); }
+.slide-text { margin-top: 18px; padding-right: 12px; color: var(--muted); font-size: 16px; line-height: 1.5; }
+.slide-text strong { color: var(--text); font-weight: 600; }
 
 .carousel-controls { margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .dots { display: flex; gap: 8px; flex-wrap: wrap; }

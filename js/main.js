@@ -125,7 +125,8 @@
           "article",
           { class: "slide", "aria-label": `${i + 1} of ${items.length}`, style: it.ratio ? `--ar: ${it.ratio}` : null },
           media(it.media, it.title, { ratio: it.ratio }),
-          h("div", { class: "slide-body" }, h("span", { class: "slide-num" }, pad(i + 1)), h("h4", {}, it.title), h("p", {}, it.text))
+          // Título en negrita como arranque del propio texto (estilo apple.com).
+          h("p", { class: "slide-text" }, h("strong", {}, /[.!?:]$/.test(it.title) ? it.title : `${it.title}.`), " ", it.text)
         )
       )
     );
