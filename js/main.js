@@ -472,15 +472,16 @@
     io.observe(ol);
   }
 
-  // ---------- Barra superior flotante tras pasar el diagrama de etapas ----------
+  // ---------- Barra superior flotante tras pasar las cifras de impacto ----------
 
   function initFloatingNav() {
     const bar = document.querySelector(".topbar");
-    const pipeline = document.getElementById("pipeline");
+    // Aparece en el hueco entre las cifras de la cabecera y la primera etapa, sin tapar nada.
+    const anchor = document.getElementById("impact");
     let raf = 0;
     const update = () => {
       raf = 0;
-      bar.classList.toggle("is-floating", pipeline.getBoundingClientRect().bottom < 0);
+      bar.classList.toggle("is-floating", anchor.getBoundingClientRect().bottom < 0);
     };
     window.addEventListener("scroll", () => (raf ||= requestAnimationFrame(update)), { passive: true });
     update();
