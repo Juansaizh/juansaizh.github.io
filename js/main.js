@@ -245,7 +245,7 @@
         "div",
         { class: "wrap featured-head" },
         h("div", {}, h("span", { class: "eyebrow" }, "Featured tool"), h("h3", {}, p.name), chips(p.stack)),
-        h("div", {}, h("p", { class: "lead" }, p.lead), p.impact && h("p", { class: "impact-pill" }, p.impact))
+        h("div", {}, h("p", { class: "lead" }, p.lead), p.impact && h("p", { class: "impact-pill" }, h("span", { class: "shine" }, p.impact)))
       ),
       h("div", { class: "wrap featured-media" }, heroMedia(p)),
       p.features && carousel(p.features, p.name, p.featuresTitle || "Feature by feature.")
@@ -259,7 +259,7 @@
       chips(p.stack),
       h("h4", {}, p.name),
       h("p", {}, p.text),
-      p.impact && h("p", { class: "impact-pill" }, p.impact),
+      p.impact && h("p", { class: "impact-pill" }, h("span", { class: "shine" }, p.impact)),
       p.bullets && h("ul", { class: "bullets" }, p.bullets.map((b) => h("li", {}, b)))
     );
     // Con antes/después el texto va arriba y la comparación ocupa todo el ancho debajo.
@@ -281,7 +281,7 @@
           h(
             "header",
             { class: "wrap stage-head" },
-            h("span", { class: "stage-num", "aria-hidden": "true" }, pad(i + 1)),
+            h("span", { class: "stage-num shine", "aria-hidden": "true" }, pad(i + 1)),
             h("div", {}, h("h2", { id: `${s.id}-title` }, s.name), h("p", { class: "stage-tagline" }, s.tagline))
           ),
           featuredBlock(s.featured),
@@ -356,6 +356,26 @@
     });
   }
 
+  // ---------- Shine (apple.com "Masterchip."): degradado que revela el texto de izq. a dcha. ----------
+
+  function initShine() {
+    if (reducedMotion || !("IntersectionObserver" in window)) return; // sin JS/movimiento: estado final
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          e.target.classList.add("is-shining");
+          io.unobserve(e.target);
+        }
+      },
+      { rootMargin: "0px 0px -15% 0px", threshold: 1 }
+    );
+    document.querySelectorAll(".shine").forEach((el) => {
+      el.classList.add("shine-armed");
+      io.observe(el);
+    });
+  }
+
   // ---------- Pipeline: las flechas se encienden en secuencia al entrar en pantalla ----------
 
   function initPipelineLights() {
@@ -402,6 +422,7 @@
   initMedia();
   initReveal();
   initPipelineLights();
+  initShine();
   initScrollSpy();
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

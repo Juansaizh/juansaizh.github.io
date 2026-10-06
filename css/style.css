@@ -358,6 +358,25 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .footer { padding: 28px 0 40px; color: var(--faint); font-size: 13px; border-top: 1px solid var(--line); }
 
+/* ---------- Shine (como "Masterchip." en apple.com) ----------
+   Un degradado tres veces más ancho que el texto, recortado a las letras:
+   [ blanco con un toque frío (estado final) | franja de color | transparente ].
+   Al animarse se desliza y el texto aparece de izquierda a derecha. */
+
+.shine {
+  background-image: linear-gradient(90deg,
+    #ffffff 0%, #dbe5f1 33.3%,
+    #b9efe4 40%, #7fb2df 48%, #3e5a8c 57%, rgba(20, 30, 60, 0) 66.6%,
+    rgba(20, 30, 60, 0) 100%);
+  background-size: 300% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.shine.shine-armed { background-position: 100% 0; }
+.shine.shine-armed.is-shining { animation: shine 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.25s forwards; }
+@keyframes shine { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+
 /* ---------- Scroll reveal ---------- */
 /* .reveal is only added by JS, so content stays visible without it. */
 
