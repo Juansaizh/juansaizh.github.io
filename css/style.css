@@ -106,16 +106,45 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .node-name { font-weight: 600; font-size: 17px; }
 .node-tools { font-size: 13px; color: var(--muted); }
 
-/* Flecha entre etapas: hacia abajo en móvil, hacia la derecha en escritorio. */
-.link { align-self: center; display: grid; place-items: center; height: 32px; color: var(--faint); font-size: 18px; line-height: 1; }
-.link::before { content: "→"; transform: rotate(90deg); }
+/* Conector entre etapas: línea de caja a caja con punta de flecha y un destello blanco
+   que la recorre. Vertical (hacia abajo) en móvil, horizontal (hacia la derecha) en escritorio. */
+.link { position: relative; align-self: center; width: 2px; height: 32px; }
+.link .wire {
+  position: absolute; inset: 0 0 6px 0; overflow: hidden;
+  background: color-mix(in srgb, var(--faint) 55%, transparent);
+}
+.link .wire::after {
+  content: ""; position: absolute; left: 0; width: 100%; height: 45%;
+  background: linear-gradient(transparent, var(--text), transparent);
+  animation: flow-v 1.8s linear infinite;
+}
+.link .head {
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid currentColor;
+  color: var(--faint);
+  animation: head-glow 1.8s linear infinite;
+}
+@keyframes flow-v { from { top: -45%; } to { top: 100%; } }
+@keyframes flow-h { from { left: -45%; } to { left: 100%; } }
+/* La punta se enciende cuando el destello llega al final de la línea. */
+@keyframes head-glow { 0%, 62% { color: var(--faint); } 85% { color: var(--text); } 100% { color: var(--faint); } }
 
 @media (min-width: 900px) {
   .pipeline { flex-direction: row; align-items: stretch; }
   .node { flex: 1 1 0; min-width: 0; display: flex; }
   .node a, .node > div { flex: 1; }
-  .link { height: auto; flex: 0 0 32px; }
-  .link::before { transform: none; }
+  .link { width: auto; height: 2px; flex: 0 0 32px; }
+  .link .wire { inset: 0 6px 0 0; }
+  .link .wire::after {
+    top: 0; width: 45%; height: 100%;
+    background: linear-gradient(90deg, transparent, var(--text), transparent);
+    animation-name: flow-h;
+  }
+  .link .head {
+    left: auto; right: 0; top: 50%; bottom: auto; transform: translateY(-50%);
+    border: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 6px solid currentColor;
+  }
 }
 
 /* Impact strip */
@@ -341,5 +370,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .link .wire::after { display: none; }
+  .link .head { animation: none; }
   * { transition: none !important; }
 }
