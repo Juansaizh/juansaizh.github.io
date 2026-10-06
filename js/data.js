@@ -43,17 +43,17 @@ window.PORTFOLIO = {
         lead:
           "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
         compare: {
-          before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI" },
-          after: { media: "img/mme-upgraded-ui.png", label: "MultiMaterial Editor", ratio: "1500 / 1140" },
+          before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "480 / 813" },
+          after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
         },
         features: [
-          { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1500 / 1140" },
-          { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "692 / 698" },
-          { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "video/mme-name-link.mp4" },
-          { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "video/mme-auto-apply.mp4" },
-          { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "img/mme-fix-duplicates.png", ratio: "1500 / 1140" },
-          { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "video/mme-slate-access.mp4" },
-          { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "img/mme-fast-iteration.png", ratio: "1500 / 1140" },
+          { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1380 / 868" },
+          { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "1460 / 972" },
+          { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "img/mme-name-link.png", ratio: "1244 / 824" },
+          { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "img/mme-auto-apply.png", ratio: "564 / 1264" },
+          { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "img/mme-fix-duplicates.png", ratio: "2028 / 1136" },
+          { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "img/mme-slate-access.png", ratio: "1192 / 744" },
+          { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "img/mme-fast-iteration.png", ratio: "1460 / 1228" },
         ],
       },
       support: [
@@ -65,7 +65,14 @@ window.PORTFOLIO = {
           impact: "2 h → 5 min",
           bullets: ["Drag & drop files or browse for them", "Batch save many scenes at once", "Batch FBX export many scenes at once", "Search, filter and sort the scene list"],
           media: "img/qss-ui.png",
-          ratio: "760 / 876",
+          ratio: "1520 / 1752",
+          features: [
+            { title: "Drag & drop scenes", text: "Drop .max files or whole folders onto the list to load them as scenes.", media: "img/qss-drag-drop.png", ratio: "1456 / 1020" },
+            { title: "Search, filter and sort", text: "Wildcards and sort commands narrow 40+ scenes down in a keystroke.", media: "img/qss-filter.png", ratio: "1456 / 928" },
+            { title: "Batch save", text: "Mark scenes in green and save all of them in one go.", media: "img/qss-batch-save.png", ratio: "1456 / 1008" },
+            { title: "Batch FBX export", text: "Scenes marked in red are exported together by OneClick Export.", media: "img/qss-batch-export.png", ratio: "1456 / 952" },
+            { title: "External change detection", text: "Flags scenes changed on disk and offers to reload the active one.", media: "img/qss-external-change.png", ratio: "1456 / 1564" },
+          ],
         },
         {
           name: "Door & Window Generator",
