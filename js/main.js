@@ -370,19 +370,24 @@
   function initReveal() {
     if (reducedMotion || !("IntersectionObserver" in window)) return;
 
-    // Each group is revealed as a sequence: its children enter one after another.
+    // Solo la cabecera se revela pieza a pieza (la presentación); el resto entra por bloques.
     const STAGGER = 90; // ms
-    const groups = [
-      ".hero .wrap:first-child > *",
-      "#pipeline > li",
-      ".stage-head > *",
-      ".featured-head > *",
-      ".support-text > *",
-      ".about-inner > *",
-      ".contact-inner > *",
+    const groups = [".hero .wrap:first-child > *", "#pipeline > li"];
+    // Bloques: cada uno entra entero. El carrusel incluye título, tarjetas y controles.
+    // #impact va entero porque sus líneas separadoras son el fondo de la lista.
+    const singles = [
+      "#impact",
+      ".stage-head",
+      ".featured-head",
+      ".featured-media",
+      ".carousel",
+      ".support-head",
+      ".support-grid > .media",
+      ".support-grid > .compare",
+      ".support-text",
+      ".about-inner",
+      ".contact-inner",
     ];
-    // #impact enters as one block: its gap lines are the list background, which would show while items are hidden.
-    const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-head", ".support-grid > .media", ".support-grid > .compare"];
 
     const targets = [];
     groups.forEach((sel) => {

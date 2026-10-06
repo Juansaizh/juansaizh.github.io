@@ -47,7 +47,7 @@ window.PORTFOLIO = {
         impact: "50 min → 10 min per flat",
         featuresTitle: "Step by step.",
         features: [
-          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors, baseboards and ceiling as named splines. Now in early production use while we polish it.", media: "img/fptf-pdf-splines.png" },
+          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors and ceiling as named splines. In early production use.", media: "img/fptf-pdf-splines.png" },
           { title: "BuildFlat", text: "Extrudes the walls in height segments and builds the ceiling, floors and terrace borders from the splines.", media: "img/fptf-buildflat.png" },
           { title: "Door & Window Generator", text: "Places, orients and instances doors, windows and curtains, and fits their geometry to each opening.", media: "img/dwg-ui.png", ratio: "322 / 262" },
           { title: "MultiMaterial Editor", text: "Sets up the flat's materials in one organized multimaterial before unwrapping.", media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280" },
