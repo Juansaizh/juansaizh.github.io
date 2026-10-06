@@ -35,13 +35,7 @@
         "data-type": isVideo ? "video" : "image",
         "data-eager": eager || null,
       },
-      h(
-        "div",
-        { class: "ph", "aria-hidden": "true" },
-        h("span", { class: "ph-icon" }),
-        h("span", { class: "ph-label" }, label),
-        h("code", { class: "ph-file" }, "assets/" + path)
-      ),
+      h("div", { class: "ph", "aria-hidden": "true" }),
       h("figcaption", { class: "sr-only" }, label)
     );
   }
@@ -54,10 +48,25 @@
     fig.classList.add("has-ratio");
   }
 
+  // Icono genérico de imagen (marco, sol y montañas) para cuando un archivo no carga.
+  const MISSING_ICON =
+    '<svg class="ph-icon" viewBox="0 0 64 64" aria-hidden="true">' +
+    '<rect x="6" y="8" width="52" height="48" rx="8" fill="currentColor"/>' +
+    '<rect x="12" y="14" width="40" height="24" rx="3" fill="var(--ph-window)"/>' +
+    '<circle cx="42" cy="21" r="3.5" fill="currentColor"/>' +
+    '<path d="M12 38 L23 26 L30 33 L36 28 L52 38 Z" fill="currentColor"/>' +
+    '<path d="M14 45 l6 -3 l6 3 l6 -3 l6 3 l6 -3 l6 3" fill="none" stroke="var(--ph-window)" stroke-width="2.5" stroke-linejoin="round"/>' +
+    "</svg>";
+
+  function showMissing(fig) {
+    fig.querySelector(".ph").innerHTML = MISSING_ICON;
+    fig.classList.add("is-missing");
+  }
+
   function loadMedia(fig) {
     fig.dataset.loaded = "1";
     const src = ASSETS + fig.dataset.src;
-    const label = fig.querySelector(".ph-label").textContent;
+    const label = fig.querySelector("figcaption").textContent;
     if (fig.dataset.type === "video") {
       const v = document.createElement("video");
       v.muted = true;
@@ -75,7 +84,7 @@
       });
       v.addEventListener("error", () => {
         v.remove();
-        fig.classList.add("is-missing");
+        showMissing(fig);
       });
       v.src = src;
       fig.append(v);
@@ -89,7 +98,7 @@
       };
       img.onerror = () => {
         img.remove();
-        fig.classList.add("is-missing");
+        showMissing(fig);
       };
       img.src = src;
       fig.append(img);
