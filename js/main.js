@@ -292,14 +292,69 @@
     });
   }
 
+  // ---------- Contacto: copiar el email al portapapeles ----------
+
+  // Primero el textarea + execCommand: es síncrono y funciona dentro del propio clic en
+  // todos los navegadores. La Clipboard API queda de respaldo (puede quedarse esperando
+  // un permiso o el foco y dejar el botón sin respuesta).
+  async function copyText(text) {
+    const ta = h("textarea", { readonly: true, style: "position:fixed;top:0;opacity:0" });
+    ta.value = text;
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch {}
+    ta.remove();
+    if (ok) return true;
+    try {
+      // Con límite de tiempo: si el navegador se queda esperando un permiso, no bloquea el botón.
+      const timeout = new Promise((_, reject) => setTimeout(reject, 1000));
+      await Promise.race([navigator.clipboard.writeText(text), timeout]);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function initCopyEmail(email) {
+    const emailBtn = document.getElementById("email");
+    const copyBtn = document.getElementById("copy-btn");
+    const status = document.getElementById("copy-status");
+    emailBtn.textContent = email;
+    let timer = 0;
+    const copy = async () => {
+      const ok = await copyText(email);
+      if (!ok) {
+        // Si el navegador no deja copiar, el email queda seleccionado para copiarlo a mano.
+        const range = document.createRange();
+        range.selectNodeContents(emailBtn);
+        getSelection().removeAllRanges();
+        getSelection().addRange(range);
+      }
+      copyBtn.textContent = ok ? "Copied!" : "Press Ctrl+C";
+      status.textContent = ok ? `${email} copied to clipboard` : "Email selected, press Ctrl+C to copy it";
+      emailBtn.classList.toggle("is-copied", ok);
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        copyBtn.textContent = "Copy";
+        emailBtn.classList.remove("is-copied");
+      }, 2000);
+    };
+    emailBtn.addEventListener("click", copy);
+    copyBtn.addEventListener("click", copy);
+  }
+
   function renderAbout() {
     const p = data.person;
     document.getElementById("about-text").textContent = data.about;
-    document.getElementById("contact").append(
-      h("a", { class: "btn primary", href: `mailto:${p.email}` }, p.email),
+    document.getElementById("contact-title").textContent = p.contactTitle || "Want to work together? Let's talk.";
+    document.getElementById("contact-links").append(
       h("a", { class: "btn", href: p.linkedin, target: "_blank", rel: "noopener" }, "LinkedIn"),
       h("a", { class: "btn", href: p.cv, target: "_blank", rel: "noopener" }, "Download CV")
     );
+    initCopyEmail(p.email);
     document.getElementById("footer-name").textContent = `${p.name} · ${p.role} · ${p.location}`;
   }
 
@@ -324,6 +379,7 @@
       ".featured-head > *",
       ".support-text > *",
       ".about-inner > *",
+      ".contact-inner > *",
     ];
     // #impact enters as one block: its gap lines are the list background, which would show while items are hidden.
     const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-head", ".support-grid > .media", ".support-grid > .compare"];
@@ -415,7 +471,7 @@
       (entries) => entries.some((e) => e.isIntersecting) && links.forEach((a) => a.classList.remove("active")),
       { rootMargin: "-40% 0px -55% 0px" }
     );
-    ["top", "about"].forEach((id) => document.getElementById(id) && clear.observe(document.getElementById(id)));
+    ["top", "about", "contact"].forEach((id) => document.getElementById(id) && clear.observe(document.getElementById(id)));
   }
 
   renderHero();

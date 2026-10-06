@@ -13,6 +13,7 @@ window.PORTFOLIO = {
     email: "juansaizn@gmail.com",
     linkedin: "https://www.linkedin.com/in/juan-saiz",
     cv: "assets/Juan_Saiz_CV.pdf",
+    contactTitle: "Looking for a Technical Artist? Let's talk.",
   },
 
   hero: {
