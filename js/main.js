@@ -214,7 +214,8 @@
     );
   }
 
-  function featuredBlock(p) {
+  // Media principal de una herramienta: antes/después si lo tiene, si no su captura.
+  function heroMedia(p) {
     // Antes/después: cada columna tan ancha como la proporción de su captura, así las dos
     // tienen la misma altura sin recortar ninguna.
     const ratioNum = (r) => {
@@ -223,7 +224,7 @@
     };
     const beforeRatio = p.compare && (p.compare.before.ratio || p.compare.after.ratio);
     const afterRatio = p.compare && (p.compare.after.ratio || p.compare.before.ratio);
-    const hero = p.compare
+    return p.compare
       ? h(
           "div",
           {
@@ -234,7 +235,9 @@
           h("div", { class: "compare-item" }, h("span", { class: "compare-tag after" }, "After"), media(p.compare.after.media, p.compare.after.label, { ratio: afterRatio }))
         )
       : media(p.media, `${p.name}: overview`, { ratio: p.ratio });
+  }
 
+  function featuredBlock(p) {
     return h(
       "article",
       { class: "featured" },
@@ -244,29 +247,26 @@
         h("div", {}, h("span", { class: "eyebrow" }, "Featured tool"), h("h3", {}, p.name), chips(p.stack)),
         h("div", {}, h("p", { class: "lead" }, p.lead), p.impact && h("p", { class: "impact-pill" }, p.impact))
       ),
-      h("div", { class: "wrap featured-media" }, hero),
+      h("div", { class: "wrap featured-media" }, heroMedia(p)),
       p.features && carousel(p.features, p.name, p.featuresTitle || "Feature by feature.")
     );
   }
 
   function supportBlock(p) {
+    const text = h(
+      "div",
+      { class: "support-text" },
+      chips(p.stack),
+      h("h4", {}, p.name),
+      h("p", {}, p.text),
+      p.impact && h("p", { class: "impact-pill" }, p.impact),
+      p.bullets && h("ul", { class: "bullets" }, p.bullets.map((b) => h("li", {}, b)))
+    );
+    // Con antes/después el texto va arriba y la comparación ocupa todo el ancho debajo.
     return h(
       "article",
-      { class: "support" },
-      h(
-        "div",
-        { class: "wrap support-grid" },
-        media(p.media, `${p.name}: overview`, { ratio: p.ratio }),
-        h(
-          "div",
-          { class: "support-text" },
-          chips(p.stack),
-          h("h4", {}, p.name),
-          h("p", {}, p.text),
-          p.impact && h("p", { class: "impact-pill" }, p.impact),
-          p.bullets && h("ul", { class: "bullets" }, p.bullets.map((b) => h("li", {}, b)))
-        )
-      ),
+      { class: p.compare ? "support has-compare" : "support" },
+      h("div", { class: "wrap support-grid" }, p.compare ? [text, heroMedia(p)] : [heroMedia(p), text]),
       p.features && carousel(p.features, p.name, p.featuresTitle || "Feature by feature.")
     );
   }
@@ -326,7 +326,7 @@
       ".about-inner > *",
     ];
     // #impact enters as one block: its gap lines are the list background, which would show while items are hidden.
-    const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-head", ".support-grid > .media"];
+    const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-head", ".support-grid > .media", ".support-grid > .compare"];
 
     const targets = [];
     groups.forEach((sel) => {

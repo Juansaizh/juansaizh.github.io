@@ -35,28 +35,43 @@ window.PORTFOLIO = {
     {
       id: "author",
       name: "Author",
-      tagline: "Clean, organized 3ds Max scenes a whole team can work on.",
-      tools: ["3ds Max", "Python", "Qt", "MaxScript"],
+      tagline: "From a PDF floor plan to a clean, bake‑ready 3ds Max flat.",
+      tools: ["3ds Max", "AI · MCP", "MaxScript", "Python"],
       featured: {
-        name: "MultiMaterial Editor",
-        stack: ["3ds Max", "Python", "Qt"],
+        name: "Floor Plan to Flat",
+        stack: ["Claude AI", "MCP", "3ds Max", "MaxScript", "Python"],
         lead:
-          "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
-        compare: {
-          before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "480 / 813" },
-          after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
-        },
+          "Five connected tools that turn a PDF floor plan into a bake‑ready 3ds Max flat. An AI skill draws the splines, and every step hands its result to the next one.",
+        media: "video/fptf-overview.mp4",
+        featuresTitle: "Step by step.",
         features: [
-          { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1380 / 868" },
-          { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "1460 / 972" },
-          { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "img/mme-name-link.png", ratio: "1244 / 824" },
-          { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "img/mme-auto-apply.png", ratio: "564 / 1264" },
-          { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "img/mme-fix-duplicates.png", ratio: "2028 / 1136" },
-          { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "img/mme-slate-access.png", ratio: "1192 / 744" },
-          { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "img/mme-fast-iteration.png", ratio: "1460 / 1228" },
+          { title: "PDF to splines (AI)", text: "A Claude skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors, baseboards and ceiling as named splines. Now in early production use while we polish it.", media: "img/fptf-pdf-splines.png" },
+          { title: "BuildFlat", text: "Extrudes the walls in height segments and builds the ceiling, floors and terrace borders from the splines.", media: "img/fptf-buildflat.png" },
+          { title: "Door & Window Generator", text: "Places, orients and instances doors, windows and curtains, and fits their geometry to each opening.", media: "img/dwg-ui.png", ratio: "322 / 262" },
+          { title: "MultiMaterial Editor", text: "Sets up the flat's materials in one organized multimaterial before unwrapping.", media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280" },
+          { title: "UnwrapAll", text: "Unwraps UVs by object type, packs them with UV‑Packer and leaves the scene ready to bake. Duplex flats included.", media: "img/fptf-unwrapall.png" },
         ],
       },
       support: [
+        {
+          name: "MultiMaterial Editor",
+          stack: ["3ds Max", "Python", "Qt"],
+          text:
+            "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
+          compare: {
+            before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "480 / 813" },
+            after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
+          },
+          features: [
+            { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1380 / 868" },
+            { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "1460 / 972" },
+            { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "img/mme-name-link.png", ratio: "1244 / 824" },
+            { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "img/mme-auto-apply.png", ratio: "564 / 1264" },
+            { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "img/mme-fix-duplicates.png", ratio: "2028 / 1136" },
+            { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "img/mme-slate-access.png", ratio: "1192 / 744" },
+            { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "img/mme-fast-iteration.png", ratio: "1460 / 1228" },
+          ],
+        },
         {
           name: "Quick Scene Switcher",
           stack: ["3ds Max", "Python", "Qt"],
