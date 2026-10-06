@@ -53,8 +53,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Top bar ---------- */
 
-/* Barra superior: en su sitio al cargar y se va con el scroll. Al pasar el diagrama de
-   etapas (.is-floating) reaparece fija: a todo el ancho en móvil y como cápsula del ancho
+/* Barra superior: en su sitio al cargar y se va con el scroll. Al pasar las cifras de
+   impacto (.is-floating) reaparece fija: a todo el ancho en móvil y como cápsula del ancho
    del contenido en escritorio. El <header> conserva su altura para que nada salte. */
 .topbar { position: relative; z-index: 50; height: 57px; border-bottom: 1px solid var(--line); }
 .topbar-inner { display: flex; align-items: center; gap: 16px; height: 56px; }
