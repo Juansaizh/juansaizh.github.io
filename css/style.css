@@ -7,6 +7,9 @@
   --muted: #9aa1ad;
   --faint: #6b7280;
 
+  /* Único color de acento: detalles interactivos y destacados, nunca texto corrido. */
+  --accent: #1e98f8;
+
   --max: 1200px;
   --gutter: 16px;
   --radius: 20px;
@@ -70,6 +73,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .nav-stage .num { font: 500 11px/1 var(--mono); }
 .nav-stage:hover { color: var(--text); }
 .nav-stage.active { background: var(--surface-2); color: var(--text); }
+.nav-stage.active .num { color: var(--accent); }
 .topbar-cta { font-size: 13px; text-decoration: none; color: var(--muted); white-space: nowrap; }
 .topbar-cta:hover { color: var(--text); }
 @media (max-width: 719px) {
@@ -99,7 +103,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background: var(--surface); border: 1px solid var(--line);
   text-decoration: none; transition: transform .2s, border-color .2s;
 }
-.node a:hover { transform: translateY(-2px); border-color: var(--faint); }
+.node a:hover { transform: translateY(-2px); border-color: var(--accent); }
 .node-num { font: 500 12px/1 var(--mono); color: var(--muted); }
 .node.out .node-num { color: var(--text); }
 .node.out > div { background: transparent; border-style: dashed; }
@@ -116,7 +120,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .link .wire::after {
   content: ""; position: absolute; inset: 0;
-  background: var(--text);
+  background: var(--accent);
   transform: scaleY(0); transform-origin: top;
 }
 .link .head {
@@ -135,7 +139,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   animation-delay: calc(var(--link-start) + var(--i) * var(--link-step) + 0.45s);
 }
 @keyframes link-fill { to { transform: none; } }
-@keyframes link-head { to { color: var(--text); } }
+@keyframes link-head { to { color: var(--accent); } }
 
 @media (min-width: 900px) {
   .pipeline { flex-direction: row; align-items: stretch; }
@@ -165,7 +169,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- Stages ---------- */
 
 /* Como en apple.com: las secciones se separan con aire, no con líneas. */
-.stage { padding: clamp(120px, 16vw, 200px) 0 24px; --c: var(--text); }
+.stage { padding: clamp(120px, 16vw, 200px) 0 24px; --c: var(--accent); }
+.featured-head .eyebrow { color: var(--accent); }
 .stage-head { display: flex; gap: 20px; align-items: center; }
 .stage-num {
   font: 800 clamp(56px, 10vw, 120px)/0.8 var(--font);
@@ -198,8 +203,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
    la animación del texto, para que la cápsula destaque sobre el resto. */
 .impact-pill::before {
   content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
-  background: linear-gradient(90deg, rgba(185, 239, 228, 0.22), rgba(127, 178, 223, 0.18) 55%, rgba(62, 90, 140, 0.16));
-  box-shadow: inset 0 0 0 1px rgba(160, 205, 235, 0.3);
+  background: linear-gradient(90deg, rgba(30, 152, 248, 0.26), rgba(30, 152, 248, 0.12));
+  box-shadow: inset 0 0 0 1px rgba(30, 152, 248, 0.4);
   transition: opacity 0.9s ease;
 }
 .impact-pill.pill-waiting::before { opacity: 0; }
@@ -355,8 +360,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .about-inner { display: grid; gap: 18px; max-width: 860px; }
 .about h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
 .about-text { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); }
-.hero-cta { margin-top: 32px; background: var(--surface-2); border-color: transparent; }
-.hero-cta:hover { background: var(--line); }
+.hero-cta { margin-top: 32px; background: var(--accent); border-color: transparent; color: #04121f; font-weight: 600; }
+.hero-cta:hover { background: color-mix(in srgb, var(--accent) 85%, #fff); }
 
 /* ---------- Contact ---------- */
 
@@ -372,7 +377,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   text-decoration-color: var(--faint);
   transition: text-decoration-color .2s;
 }
-.email:hover { text-decoration-color: var(--text); }
+.email:hover { text-decoration-color: var(--accent); }
 .email.is-copied { text-decoration-color: transparent; }
 .copy-btn {
   min-height: 40px; padding: 0 18px; border-radius: 999px;
@@ -380,7 +385,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font: 500 14px/1 var(--font); cursor: pointer;
   transition: background .2s, color .2s;
 }
-.copy-btn:hover { background: var(--surface-2); color: var(--text); }
+.copy-btn:hover { background: var(--surface-2); color: var(--text); border-color: var(--accent); }
 .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 .btn {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
@@ -401,9 +406,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .shine {
   background-image: linear-gradient(90deg,
-    #ffffff 0%, #dbe5f1 33.3%,
-    #b9efe4 40%, #7fb2df 48%, #3e5a8c 57%, rgba(20, 30, 60, 0) 66.6%,
-    rgba(20, 30, 60, 0) 100%);
+    #ffffff 0%, #d9ecfd 33.3%,
+    #9fd3fd 40%, #1e98f8 48%, #0b4c86 57%, rgba(8, 40, 75, 0) 66.6%,
+    rgba(8, 40, 75, 0) 100%);
   background-size: 300% 100%;
   background-position: 0% 0;
   -webkit-background-clip: text; background-clip: text;
@@ -429,6 +434,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .link .wire::after { transform: none; animation: none !important; }
-  .link .head { color: var(--text); animation: none !important; }
+  .link .head { color: var(--accent); animation: none !important; }
   * { transition: none !important; }
 }
