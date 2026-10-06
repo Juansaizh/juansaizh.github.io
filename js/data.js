@@ -65,10 +65,10 @@ window.PORTFOLIO = {
             after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
           },
           features: [
-            { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1380 / 868" },
+            { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1380 / 944" },
             { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "1460 / 972" },
             { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "img/mme-name-link.png", ratio: "1244 / 824" },
-            { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "img/mme-auto-apply.png", ratio: "564 / 1264" },
+            { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "img/mme-auto-apply.png", ratio: "1516 / 1140" },
             { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "img/mme-fix-duplicates.png", ratio: "2028 / 1136" },
             { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "img/mme-slate-access.png", ratio: "1192 / 744" },
             { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "img/mme-fast-iteration.png", ratio: "1460 / 1228" },
