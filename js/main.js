@@ -202,7 +202,7 @@
           { class: `node s${i + 1}` },
           h("a", { href: `#${s.id}` }, h("span", { class: "node-num" }, pad(i + 1)), h("span", { class: "node-name" }, s.name), h("span", { class: "node-tools" }, s.tools.join(" · ")))
         ),
-        h("li", { class: "link", "aria-hidden": "true" }, h("span", { class: "wire" }), h("span", { class: "head" }))
+        h("li", { class: "link", style: `--i: ${i}`, "aria-hidden": "true" }, h("span", { class: "wire" }), h("span", { class: "head" }))
       );
     });
     ol.append(h("li", { class: "node out" }, h("div", {}, h("span", { class: "node-num" }, "→"), h("span", { class: "node-name" }, data.output.name), h("span", { class: "node-tools" }, data.output.tools))));
@@ -356,6 +356,22 @@
     });
   }
 
+  // ---------- Pipeline: las flechas se encienden en secuencia al entrar en pantalla ----------
+
+  function initPipelineLights() {
+    const ol = document.getElementById("pipeline");
+    if (reducedMotion || !("IntersectionObserver" in window)) return ol.classList.add("is-on");
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        ol.classList.add("is-on");
+        io.disconnect();
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(ol);
+  }
+
   // ---------- Scroll spy for the stage nav ----------
 
   function initScrollSpy() {
@@ -385,6 +401,7 @@
   renderAbout();
   initMedia();
   initReveal();
+  initPipelineLights();
   initScrollSpy();
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
