@@ -289,15 +289,21 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* Todos los slides tienen la misma altura de media; el ancho sale de la proporción
    de cada captura (--ar). Sin captura, el placeholder es ligeramente vertical. */
 /* Algo más bajos que la imagen principal, para que el carrusel quede por debajo en jerarquía. */
-.track { --slide-h: clamp(220px, 34vw, 400px); }
+/* Ancho máximo: deja 48px a la derecha para que asome la siguiente tarjeta en pantallas estrechas. */
+.track { --slide-h: clamp(220px, 34vw, 400px); --slide-max-w: calc(100vw - 2 * var(--gutter) - 48px); }
 .slide {
   --ar: 4 / 5;
   flex: 0 0 auto;
-  width: min(calc(var(--slide-h) * var(--ar)), calc(100vw - 2 * var(--gutter)));
+  width: min(calc(var(--slide-h) * var(--ar)), var(--slide-max-w));
   scroll-snap-align: start;
 }
-/* Como en apple.com: sin tarjeta, solo la captura enmarcada y el texto debajo sobre el fondo de la web. */
-.slide .media { aspect-ratio: auto; height: var(--slide-h); border-radius: var(--radius); }
+/* Como en apple.com: sin tarjeta, solo la captura enmarcada y el texto debajo sobre el fondo de la web.
+   Si una captura muy ancha choca con el ancho máximo, baja de alto en proporción en vez de recortarse. */
+.slide .media {
+  aspect-ratio: auto;
+  height: min(var(--slide-h), calc(var(--slide-max-w) / (var(--ar))));
+  border-radius: var(--radius);
+}
 .slide-text { margin-top: 18px; padding-right: 12px; color: var(--muted); font-size: 16px; line-height: 1.5; }
 .slide-text strong { color: var(--text); font-weight: 600; }
 
