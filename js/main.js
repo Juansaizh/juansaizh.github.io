@@ -422,9 +422,9 @@
           if (!e.isIntersecting) continue;
           e.target.classList.add("is-shining");
           // En las cápsulas, el fondo degradado aparece cuando el texto termina de revelarse
-          // (1.8 s de animación con -0.25 s de retardo, ver .shine en style.css).
+          // (1.8 s de animación sin retardo, ver .shine en style.css).
           const pill = e.target.closest(".impact-pill");
-          if (pill) setTimeout(() => pill.classList.remove("pill-waiting"), 1550);
+          if (pill) setTimeout(() => pill.classList.remove("pill-waiting"), 1800);
           io.unobserve(e.target);
         }
       },
