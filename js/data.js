@@ -47,7 +47,7 @@ window.PORTFOLIO = {
           after: { media: "img/mme-upgraded-ui.png", label: "MultiMaterial Editor", ratio: "1500 / 1140" },
         },
         features: [
-          { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "video/mme-drag-reorder.mp4" },
+          { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1500 / 1140" },
           { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "692 / 698" },
           { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "video/mme-name-link.mp4" },
           { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "video/mme-auto-apply.mp4" },
@@ -65,7 +65,7 @@ window.PORTFOLIO = {
           impact: "2 h → 5 min",
           bullets: ["Drag & drop files or browse for them", "Batch save many scenes at once", "Batch FBX export many scenes at once", "Search, filter and sort the scene list"],
           media: "img/qss-ui.png",
-          ratio: "760 / 1480",
+          ratio: "760 / 876",
         },
         {
           name: "Door & Window Generator",
