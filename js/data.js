@@ -43,6 +43,7 @@ window.PORTFOLIO = {
         lead:
           "Five connected tools that turn a PDF floor plan into a bake‑ready 3ds Max flat. An AI skill draws the splines, and every step hands its result to the next one.",
         media: "video/fptf-overview.mp4",
+        impact: "50 min → 10 min per flat",
         featuresTitle: "Step by step.",
         features: [
           { title: "PDF to splines (AI)", text: "A Claude skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors, baseboards and ceiling as named splines. Now in early production use while we polish it.", media: "img/fptf-pdf-splines.png" },
