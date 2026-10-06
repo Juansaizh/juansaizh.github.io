@@ -41,16 +41,16 @@ window.PORTFOLIO = {
           "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
         compare: {
           before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI" },
-          after: { media: "video/mme-upgraded-ui.mp4", label: "MultiMaterial Editor" },
+          after: { media: "img/mme-upgraded-ui.png", label: "MultiMaterial Editor" },
         },
         features: [
           { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "video/mme-drag-reorder.mp4" },
-          { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "video/mme-auto-renumber.mp4" },
+          { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png" },
           { title: "Linked names", text: "The slot name stays in sync with the material name.", media: "video/mme-name-link.mp4" },
           { title: "Auto‑apply to geometry", text: "Changed IDs are applied to the scene geometry, so meshes never drift out of sync.", media: "video/mme-auto-apply.mp4" },
-          { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "video/mme-fix-duplicates.mp4" },
+          { title: "Fix duplicated materials", text: "Cleans up the duplicates left behind by wrongly merged meshes.", media: "img/mme-fix-duplicates.png" },
           { title: "Quick Slate access", text: "Jump straight to any sub‑material in the Slate Material Editor.", media: "video/mme-slate-access.mp4" },
-          { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "video/mme-fast-iteration.mp4" },
+          { title: "Fast iteration", text: "Step between materials quickly while you tweak them.", media: "img/mme-fast-iteration.png" },
         ],
       },
       support: [
@@ -61,7 +61,7 @@ window.PORTFOLIO = {
             "Dockable panel to open and manage many scenes in a single 3ds Max instance, inspired by the Unity Editor. Edit 40+ scenes of a team project at once, then batch save and export with control.",
           impact: "2 h → 5 min",
           bullets: ["Drag & drop files or browse for them", "Batch save many scenes at once", "Batch FBX export many scenes at once", "Search, filter and sort the scene list"],
-          media: "video/qss-ui.mp4",
+          media: "img/qss-ui.png",
         },
         {
           name: "Door & Window Generator",
