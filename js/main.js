@@ -282,7 +282,7 @@
             "header",
             { class: "wrap stage-head" },
             h("span", { class: "stage-num", "aria-hidden": "true" }, pad(i + 1)),
-            h("div", {}, h("p", { class: "eyebrow" }, `Stage ${pad(i + 1)} of ${pad(data.stages.length)}`), h("h2", { id: `${s.id}-title` }, s.name), h("p", { class: "stage-tagline" }, s.tagline))
+            h("div", {}, h("h2", { id: `${s.id}-title` }, s.name), h("p", { class: "stage-tagline" }, s.tagline))
           ),
           featuredBlock(s.featured),
           s.support?.length && h("div", { class: "wrap support-label" }, h("span", {}, `Also in ${s.name}`)),

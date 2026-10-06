@@ -167,13 +167,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .stage.s2 { --c: var(--s2); }
 .stage.s3 { --c: var(--s3); }
 .stage.s4 { --c: var(--s4); }
-.stage-head { display: flex; gap: 20px; align-items: flex-start; }
+.stage-head { display: flex; gap: 20px; align-items: center; }
 .stage-num {
   font: 800 clamp(56px, 10vw, 120px)/0.8 var(--font);
   letter-spacing: -0.05em;
   color: var(--c);
 }
-.stage-head h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; margin-top: 8px; }
+.stage-head h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; }
 .stage-tagline { margin-top: 10px; color: var(--muted); font-size: clamp(16px, 1.8vw, 19px); max-width: 48ch; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
