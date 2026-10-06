@@ -328,6 +328,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .support { margin-top: 40px; }
 .support + .support { margin-top: clamp(80px, 10vw, 128px); }
 .support-grid { display: grid; gap: 20px; align-items: center; }
+.support.has-compare .support-grid { grid-template-columns: 1fr; gap: 32px; }
+.support.has-compare .support-text { max-width: 60ch; }
 .support-text { display: grid; gap: 10px; justify-items: start; }
 .support-text h4 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 700; }
 .support-text p { color: var(--muted); }
