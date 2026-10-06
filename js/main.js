@@ -307,6 +307,7 @@
     document.getElementById("hero-kicker").textContent = data.hero.kicker;
     document.getElementById("hero-title").textContent = data.hero.title;
     document.getElementById("hero-text").textContent = data.hero.text;
+    document.getElementById("hero-note").textContent = data.hero.note || "";
     document.getElementById("brand").textContent = data.person.name;
   }
 

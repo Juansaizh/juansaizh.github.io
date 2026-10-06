@@ -20,6 +20,8 @@ window.PORTFOLIO = {
     title: "I build the pipeline between the artist and the real‑time app.",
     text:
       "Tools in MaxScript, Python and C# that connect 3ds Max, Unity and the render farm, so a team of artists can ship interactive 3D for web and mobile without the busywork.",
+    note:
+      "A selection of the tools I've built over the last few years, organized by the company's production stages. Most of them are private: they live in the company's internal repository, where I'm the sole author.",
   },
 
   impact: [
@@ -39,14 +41,14 @@ window.PORTFOLIO = {
       tools: ["3ds Max", "AI · MCP", "MaxScript", "Python"],
       featured: {
         name: "Floor Plan to Flat",
-        stack: ["Claude AI", "MCP", "3ds Max", "MaxScript", "Python"],
+        stack: ["AI", "MCP", "3ds Max", "MaxScript", "Python"],
         lead:
           "Five connected tools that turn a PDF floor plan into a bake‑ready 3ds Max flat. An AI skill draws the splines, and every step hands its result to the next one.",
         media: "video/fptf-overview.mp4",
         impact: "50 min → 10 min per flat",
         featuresTitle: "Step by step.",
         features: [
-          { title: "PDF to splines (AI)", text: "A Claude skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors, baseboards and ceiling as named splines. Now in early production use while we polish it.", media: "img/fptf-pdf-splines.png" },
+          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors, baseboards and ceiling as named splines. Now in early production use while we polish it.", media: "img/fptf-pdf-splines.png" },
           { title: "BuildFlat", text: "Extrudes the walls in height segments and builds the ceiling, floors and terrace borders from the splines.", media: "img/fptf-buildflat.png" },
           { title: "Door & Window Generator", text: "Places, orients and instances doors, windows and curtains, and fits their geometry to each opening.", media: "img/dwg-ui.png", ratio: "322 / 262" },
           { title: "MultiMaterial Editor", text: "Sets up the flat's materials in one organized multimaterial before unwrapping.", media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280" },
