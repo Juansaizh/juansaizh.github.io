@@ -285,7 +285,7 @@
             h("div", {}, h("h2", { id: `${s.id}-title` }, s.name), h("p", { class: "stage-tagline" }, s.tagline))
           ),
           featuredBlock(s.featured),
-          s.support?.length && h("div", { class: "wrap support-label" }, h("span", {}, `Also in ${s.name}`)),
+          s.support?.length && h("h3", { class: "wrap support-head" }, `More in ${s.name}.`),
           (s.support || []).map(supportBlock)
         )
       );
@@ -326,7 +326,7 @@
       ".about-inner > *",
     ];
     // #impact enters as one block: its gap lines are the list background, which would show while items are hidden.
-    const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-label", ".support-grid > .media"];
+    const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-head", ".support-grid > .media"];
 
     const targets = [];
     groups.forEach((sel) => {
