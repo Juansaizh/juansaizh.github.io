@@ -487,6 +487,33 @@
     update();
   }
 
+  // ---------- Modo día / noche ----------
+
+  function initThemeToggle() {
+    const root = document.documentElement;
+    const btn = document.getElementById("theme-toggle");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    const systemLight = window.matchMedia("(prefers-color-scheme: light)");
+    const current = () => root.dataset.theme || (systemLight.matches ? "light" : "dark");
+    const sync = () => {
+      const t = current();
+      btn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      meta.setAttribute("content", getComputedStyle(root).getPropertyValue("--bg").trim());
+    };
+    btn.addEventListener("click", () => {
+      const next = current() === "dark" ? "light" : "dark";
+      root.classList.add("theme-switching");
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {}
+      sync();
+      setTimeout(() => root.classList.remove("theme-switching"), 400);
+    });
+    systemLight.addEventListener("change", sync);
+    sync();
+  }
+
   // ---------- Scroll spy for the stage nav ----------
 
   function initScrollSpy() {
@@ -520,5 +547,6 @@
   initShine();
   initScrollSpy();
   initFloatingNav();
+  initThemeToggle();
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

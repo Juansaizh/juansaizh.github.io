@@ -6,6 +6,13 @@
     <title>Juan Saiz · Technical Artist</title>
     <meta name="description" content="Juan Saiz, Technical Artist & Pipeline Developer. One connected pipeline of tools in MaxScript, Python and C# across 3ds Max, Unity and Deadline." />
     <meta name="theme-color" content="#0b0c0f" />
+    <!-- Aplica el modo elegido antes de pintar para que no haya un fogonazo del otro tema. -->
+    <script>
+      try {
+        const t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
     <!-- Solo para quien tenga el enlace: que no aparezca en buscadores. -->
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -21,6 +28,10 @@
       <div class="wrap topbar-inner">
         <a href="#top" class="brand" id="brand">Juan Saiz</a>
         <nav id="stage-nav" class="stage-nav" aria-label="Pipeline stages"></nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z" /></svg>
+        </button>
         <a href="#contact" class="topbar-cta">Contact</a>
       </div>
     </header>
