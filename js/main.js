@@ -492,6 +492,7 @@
   function initThemeToggle() {
     const root = document.documentElement;
     const btn = document.getElementById("theme-toggle");
+    if (btn.hidden) return; // modo día desactivado: se mantiene el data-theme del HTML
     const meta = document.querySelector('meta[name="theme-color"]');
     const systemLight = window.matchMedia("(prefers-color-scheme: light)");
     const current = () => root.dataset.theme || (systemLight.matches ? "light" : "dark");
