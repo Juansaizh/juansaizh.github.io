@@ -266,6 +266,52 @@
     document.getElementById("brand").textContent = data.person.name;
   }
 
+  // ---------- Scroll reveal (apple.com style: fade in + slight rise) ----------
+
+  function initReveal() {
+    if (reducedMotion || !("IntersectionObserver" in window)) return;
+
+    // Each group is revealed as a sequence: its children enter one after another.
+    const STAGGER = 90; // ms
+    const groups = [
+      ".hero .wrap:first-child > *",
+      "#pipeline > li",
+      ".stage-head > *",
+      ".featured-head > *",
+      ".support-text > *",
+      ".about-inner > *",
+    ];
+    // #impact enters as one block: its gap lines are the list background, which would show while items are hidden.
+    const singles = ["#impact", ".featured-media", ".carousel", ".support-label", ".support-grid > .media"];
+
+    const targets = [];
+    groups.forEach((sel) => {
+      const byParent = new Map();
+      document.querySelectorAll(sel).forEach((el) => {
+        const i = byParent.get(el.parentElement) || 0;
+        byParent.set(el.parentElement, i + 1);
+        el.style.setProperty("--reveal-delay", `${Math.min(i, 6) * STAGGER}ms`);
+        targets.push(el);
+      });
+    });
+    singles.forEach((sel) => document.querySelectorAll(sel).forEach((el) => targets.push(el)));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+    targets.forEach((el) => {
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  }
+
   // ---------- Scroll spy for the stage nav ----------
 
   function initScrollSpy() {
@@ -294,6 +340,7 @@
   renderStages();
   renderAbout();
   initMedia();
+  initReveal();
   initScrollSpy();
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
