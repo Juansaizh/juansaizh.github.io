@@ -202,7 +202,7 @@
           { class: `node s${i + 1}` },
           h("a", { href: `#${s.id}` }, h("span", { class: "node-num" }, pad(i + 1)), h("span", { class: "node-name" }, s.name), h("span", { class: "node-tools" }, s.tools.join(" · ")))
         ),
-        h("li", { class: "link", "aria-hidden": "true" })
+        h("li", { class: "link", "aria-hidden": "true" }, h("span", { class: "wire" }), h("span", { class: "head" }))
       );
     });
     ol.append(h("li", { class: "node out" }, h("div", {}, h("span", { class: "node-num" }, "→"), h("span", { class: "node-name" }, data.output.name), h("span", { class: "node-tools" }, data.output.tools))));
