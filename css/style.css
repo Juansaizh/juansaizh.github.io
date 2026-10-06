@@ -53,14 +53,30 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Top bar ---------- */
 
-.topbar {
-  position: sticky; top: 0; z-index: 50;
+/* Barra superior: en su sitio al cargar y se va con el scroll. Al pasar el diagrama de
+   etapas (.is-floating) reaparece fija: a todo el ancho en móvil y como cápsula del ancho
+   del contenido en escritorio. El <header> conserva su altura para que nada salte. */
+.topbar { position: relative; z-index: 50; height: 57px; border-bottom: 1px solid var(--line); }
+.topbar-inner { display: flex; align-items: center; gap: 16px; height: 56px; }
+.topbar.is-floating .topbar-inner {
+  position: fixed; top: 0; left: 0; right: 0;
   background: color-mix(in srgb, var(--bg) 78%, transparent);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid var(--line);
+  animation: nav-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.topbar-inner { display: flex; align-items: center; gap: 16px; height: 56px; }
+@keyframes nav-in { from { transform: translateY(-110%); opacity: 0; } }
+@media (min-width: 720px) {
+  .topbar.is-floating .topbar-inner {
+    top: 12px; height: 52px;
+    width: min(calc(100% - 2 * var(--gutter)), calc(var(--max) - 2 * var(--gutter)));
+    margin-inline: auto; padding-inline: 22px;
+    border: 1px solid var(--line); border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  }
+  @keyframes nav-in { from { transform: translateY(calc(-100% - 12px)); opacity: 0; } }
+}
 .brand { font-weight: 700; text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
 .stage-nav { display: flex; gap: 4px; margin-inline: auto; overflow-x: auto; scrollbar-width: none; }
 .stage-nav::-webkit-scrollbar { display: none; }
@@ -431,6 +447,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .topbar.is-floating .topbar-inner { animation: none; }
   .link .wire::after { transform: none; animation: none !important; }
   .link .head { color: var(--accent); animation: none !important; }
   * { transition: none !important; }
