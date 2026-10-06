@@ -269,7 +269,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* Carousel */
-.carousel { margin-top: 32px; }
+/* Separación amplia respecto a la presentación de la herramienta, y un título propio un
+   nivel por debajo del h3 (stage h2 > herramienta h3 > carrusel h4), como en apple.com. */
+.carousel { margin-top: clamp(80px, 11vw, 140px); }
+.carousel-head {
+  font-size: clamp(22px, 2.6vw, 30px); font-weight: 700;
+  margin-bottom: clamp(20px, 2.5vw, 32px);
+}
+.support .carousel { margin-top: clamp(56px, 8vw, 96px); }
 .track {
   display: flex; gap: 20px;
   overflow-x: auto; overscroll-behavior-x: contain;
@@ -282,7 +289,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .track::-webkit-scrollbar { display: none; }
 /* Todos los slides tienen la misma altura de media; el ancho sale de la proporción
    de cada captura (--ar). Sin captura, el placeholder es ligeramente vertical. */
-.track { --slide-h: clamp(300px, 48vw, 520px); }
+/* Algo más bajos que la imagen principal, para que el carrusel quede por debajo en jerarquía. */
+.track { --slide-h: clamp(220px, 34vw, 400px); }
 .slide {
   --ar: 4 / 5;
   flex: 0 0 auto;

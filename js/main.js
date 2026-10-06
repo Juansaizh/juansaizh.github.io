@@ -116,7 +116,7 @@
 
   // ---------- Carousel (apple.com style: scroll-snap + prev/next) ----------
 
-  function carousel(items, title) {
+  function carousel(items, title, heading = null) {
     const track = h(
       "div",
       { class: "track", tabindex: "0", role: "group", "aria-label": `${title}: features` },
@@ -173,9 +173,11 @@
     window.addEventListener("resize", () => (raf ||= requestAnimationFrame(update)));
     requestAnimationFrame(update);
 
+    // Título propio del carrusel, un nivel por debajo del nombre de la herramienta (como apple.com).
     return h(
       "div",
       { class: "carousel" },
+      heading && h("h4", { class: "wrap carousel-head" }, heading),
       track,
       h("div", { class: "wrap carousel-controls" }, dots, h("div", { class: "arrows" }, prev, next))
     );
@@ -242,7 +244,7 @@
         h("div", {}, h("p", { class: "lead" }, p.lead), p.impact && h("p", { class: "impact-pill" }, p.impact))
       ),
       h("div", { class: "wrap featured-media" }, hero),
-      p.features && carousel(p.features, p.name)
+      p.features && carousel(p.features, p.name, p.featuresTitle || "Feature by feature.")
     );
   }
 
@@ -264,7 +266,7 @@
           p.bullets && h("ul", { class: "bullets" }, p.bullets.map((b) => h("li", {}, b)))
         )
       ),
-      p.features && carousel(p.features, p.name)
+      p.features && carousel(p.features, p.name, p.featuresTitle || "Feature by feature.")
     );
   }
 
@@ -323,7 +325,7 @@
       ".about-inner > *",
     ];
     // #impact enters as one block: its gap lines are the list background, which would show while items are hidden.
-    const singles = ["#impact", ".featured-media", ".carousel", ".support-label", ".support-grid > .media"];
+    const singles = ["#impact", ".featured-media", ".carousel-head", ".track", ".carousel-controls", ".support-label", ".support-grid > .media"];
 
     const targets = [];
     groups.forEach((sel) => {
