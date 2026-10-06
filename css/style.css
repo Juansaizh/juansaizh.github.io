@@ -84,6 +84,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- Hero ---------- */
 
 .hero { padding: 72px 0 40px; }
+/* Si la frase superior ocupa dos líneas, que respiren. */
+#hero-kicker { line-height: 1.7; }
+@media (max-width: 719px) {
+  #hero-kicker .kicker-part { display: block; }
+  #hero-kicker .kicker-sep { display: none; }
+}
 .hero h1 {
   margin-top: 16px;
   font-size: clamp(36px, 5.6vw, 68px);
