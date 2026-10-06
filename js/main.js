@@ -472,6 +472,20 @@
     io.observe(ol);
   }
 
+  // ---------- Barra superior flotante tras pasar el diagrama de etapas ----------
+
+  function initFloatingNav() {
+    const bar = document.querySelector(".topbar");
+    const pipeline = document.getElementById("pipeline");
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      bar.classList.toggle("is-floating", pipeline.getBoundingClientRect().bottom < 0);
+    };
+    window.addEventListener("scroll", () => (raf ||= requestAnimationFrame(update)), { passive: true });
+    update();
+  }
+
   // ---------- Scroll spy for the stage nav ----------
 
   function initScrollSpy() {
@@ -504,5 +518,6 @@
   initPipelineLights();
   initShine();
   initScrollSpy();
+  initFloatingNav();
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
