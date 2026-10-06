@@ -19,9 +19,7 @@ window.PORTFOLIO = {
     kicker: "Technical Artist & Pipeline Developer",
     title: "I build the pipeline between the artist and the real‑time app.",
     text:
-      "Tools in MaxScript, Python and C# that connect 3ds Max, Unity and the render farm, so a team of artists can ship interactive 3D for web and mobile without the busywork.",
-    note:
-      "A selection of the tools I've built over the last few years, organized by the company's production stages. Most of them are private: they live in the company's internal repository, where I'm the sole author.",
+      "This is a portfolio of the tools I've built over the last few years, organized by the production stages they serve, from a PDF floor plan to the real‑time app. Most of them are private: they live in the company's internal repository, where I'm the sole author.",
   },
 
   impact: [
