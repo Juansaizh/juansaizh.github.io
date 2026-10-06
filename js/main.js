@@ -368,7 +368,12 @@
   }
 
   function renderHero() {
-    document.getElementById("hero-kicker").textContent = data.hero.kicker;
+    // Cada tramo separado por " · " va en su propio span: en móvil se apilan sin el punto.
+    const kicker = document.getElementById("hero-kicker");
+    data.hero.kicker.split(" · ").forEach((part, i) => {
+      if (i) kicker.append(h("span", { class: "kicker-sep", "aria-hidden": "true" }, " · "));
+      kicker.append(h("span", { class: "kicker-part" }, part));
+    });
     document.getElementById("hero-title").textContent = data.hero.title;
     document.getElementById("hero-text").textContent = data.hero.text;
     document.getElementById("brand").textContent = data.person.name;
