@@ -307,14 +307,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .slide {
   --ar: 4 / 5;
   flex: 0 0 auto;
-  /* Ancho mínimo para que una captura estrecha no alargue el texto (y empuje los controles). */
-  width: min(max(calc(var(--slide-h) * var(--ar)), 400px), calc(100vw - 2 * var(--gutter)));
+  width: min(calc(var(--slide-h) * var(--ar)), calc(100vw - 2 * var(--gutter)));
   scroll-snap-align: start;
 }
 /* Como en apple.com: sin tarjeta, solo la captura enmarcada y el texto debajo sobre el fondo de la web. */
 .slide .media { aspect-ratio: auto; height: var(--slide-h); border-radius: var(--radius); }
-/* Si el marco es más ancho que la captura, se muestra entera y centrada, sin recortar. */
-.slide .media video, .slide .media img { object-fit: contain; }
 .slide-text { margin-top: 18px; padding-right: 12px; color: var(--muted); font-size: 16px; line-height: 1.5; }
 .slide-text strong { color: var(--text); font-weight: 600; }
 
