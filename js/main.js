@@ -365,6 +365,10 @@
         for (const e of entries) {
           if (!e.isIntersecting) continue;
           e.target.classList.add("is-shining");
+          // En las cápsulas, el fondo degradado aparece cuando el texto termina de revelarse
+          // (0.25 s de retardo + 1.8 s de animación, ver .shine en style.css).
+          const pill = e.target.closest(".impact-pill");
+          if (pill) setTimeout(() => pill.classList.remove("pill-waiting"), 2050);
           io.unobserve(e.target);
         }
       },
@@ -372,6 +376,7 @@
     );
     document.querySelectorAll(".shine").forEach((el) => {
       el.classList.add("shine-armed");
+      el.closest(".impact-pill")?.classList.add("pill-waiting");
       io.observe(el);
     });
   }
