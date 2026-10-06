@@ -23,11 +23,18 @@
 
   // ---------- Media (video/image with placeholder fallback) ----------
 
-  function media(path, label, { eager = false } = {}) {
+  // ratio: proporción de la captura ("ancho / alto"). El marco la adopta en lugar de recortarla.
+  function media(path, label, { eager = false, ratio = null } = {}) {
     const isVideo = /\.(mp4|webm)$/i.test(path);
     return h(
       "figure",
-      { class: "media", "data-src": path, "data-type": isVideo ? "video" : "image", "data-eager": eager || null },
+      {
+        class: ratio ? "media has-ratio" : "media",
+        style: ratio ? `--ar: ${ratio}` : null,
+        "data-src": path,
+        "data-type": isVideo ? "video" : "image",
+        "data-eager": eager || null,
+      },
       h(
         "div",
         { class: "ph", "aria-hidden": "true" },
@@ -37,6 +44,14 @@
       ),
       h("figcaption", { class: "sr-only" }, label)
     );
+  }
+
+  // Sin `ratio` en data.js, el marco toma la proporción real al cargar. No se hace dentro
+  // del carrusel: un cambio de ancho tardío haría saltar el scroll.
+  function adoptRatio(fig, w, h) {
+    if (!w || !h || fig.classList.contains("has-ratio") || fig.closest(".slide")) return;
+    fig.style.setProperty("--ar", `${w} / ${h}`);
+    fig.classList.add("has-ratio");
   }
 
   function loadMedia(fig) {
@@ -54,6 +69,7 @@
       v.preload = "metadata";
       if (reducedMotion) v.controls = true;
       v.addEventListener("loadeddata", () => {
+        adoptRatio(fig, v.videoWidth, v.videoHeight);
         fig.classList.add("is-ready");
         if (!reducedMotion && fig.dataset.visible === "1") v.play().catch(() => {});
       });
@@ -67,7 +83,10 @@
       const img = new Image();
       img.alt = label;
       img.decoding = "async";
-      img.onload = () => fig.classList.add("is-ready");
+      img.onload = () => {
+        adoptRatio(fig, img.naturalWidth, img.naturalHeight);
+        fig.classList.add("is-ready");
+      };
       img.onerror = () => {
         img.remove();
         fig.classList.add("is-missing");
@@ -104,8 +123,8 @@
       items.map((it, i) =>
         h(
           "article",
-          { class: "slide", "aria-label": `${i + 1} of ${items.length}` },
-          media(it.media, it.title),
+          { class: "slide", "aria-label": `${i + 1} of ${items.length}`, style: it.ratio ? `--ar: ${it.ratio}` : null },
+          media(it.media, it.title, { ratio: it.ratio }),
           h("div", { class: "slide-body" }, h("span", { class: "slide-num" }, pad(i + 1)), h("h4", {}, it.title), h("p", {}, it.text))
         )
       )
@@ -119,22 +138,33 @@
     const prev = h("button", { class: "nav-btn prev", type: "button", "aria-label": "Previous" }, h("span", { "aria-hidden": "true" }, "‹"));
     const next = h("button", { class: "nav-btn next", type: "button", "aria-label": "Next" }, h("span", { "aria-hidden": "true" }, "›"));
 
-    const step = () => {
-      const slide = track.querySelector(".slide");
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      return slide.getBoundingClientRect().width + gap;
+    // Los slides tienen anchos distintos (cada uno el de su captura): se navega por posición real.
+    const slides = [...track.children];
+    const posOf = (slide) =>
+      track.scrollLeft +
+      slide.getBoundingClientRect().left -
+      track.getBoundingClientRect().left -
+      (parseFloat(getComputedStyle(track).paddingLeft) || 0);
+    const current = () => {
+      let best = 0;
+      let dist = Infinity;
+      slides.forEach((s, i) => {
+        const d = Math.abs(posOf(s) - track.scrollLeft);
+        if (d < dist) [best, dist] = [i, d];
+      });
+      return best;
     };
     const behavior = reducedMotion ? "auto" : "smooth";
-    const goTo = (i) => track.scrollTo({ left: i * step(), behavior });
-    prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior }));
-    next.addEventListener("click", () => track.scrollBy({ left: step(), behavior }));
+    const goTo = (i) => track.scrollTo({ left: posOf(slides[Math.max(0, Math.min(slides.length - 1, i))]), behavior });
+    prev.addEventListener("click", () => goTo(current() - 1));
+    next.addEventListener("click", () => goTo(current() + 1));
 
     let raf = 0;
     const update = () => {
       raf = 0;
       const max = track.scrollWidth - track.clientWidth;
       const atEnd = track.scrollLeft >= max - 4;
-      const idx = atEnd ? items.length - 1 : Math.round(track.scrollLeft / step());
+      const idx = atEnd ? items.length - 1 : current();
       prev.disabled = track.scrollLeft <= 4;
       next.disabled = atEnd;
       [...dots.children].forEach((d, i) => d.setAttribute("aria-selected", i === idx ? "true" : "false"));
@@ -186,10 +216,10 @@
       ? h(
           "div",
           { class: "compare" },
-          h("div", { class: "compare-item" }, h("span", { class: "compare-tag before" }, "Before"), media(p.compare.before.media, p.compare.before.label)),
-          h("div", { class: "compare-item" }, h("span", { class: "compare-tag after" }, "After"), media(p.compare.after.media, p.compare.after.label))
+          h("div", { class: "compare-item" }, h("span", { class: "compare-tag before" }, "Before"), media(p.compare.before.media, p.compare.before.label, { ratio: p.compare.before.ratio || p.compare.after.ratio })),
+          h("div", { class: "compare-item" }, h("span", { class: "compare-tag after" }, "After"), media(p.compare.after.media, p.compare.after.label, { ratio: p.compare.after.ratio || p.compare.before.ratio }))
         )
-      : media(p.media, `${p.name}: overview`);
+      : media(p.media, `${p.name}: overview`, { ratio: p.ratio });
 
     return h(
       "article",
@@ -212,7 +242,7 @@
       h(
         "div",
         { class: "wrap support-grid" },
-        media(p.media, `${p.name}: overview`),
+        media(p.media, `${p.name}: overview`, { ratio: p.ratio }),
         h(
           "div",
           { class: "support-text" },

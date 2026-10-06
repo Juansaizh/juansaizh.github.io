@@ -203,13 +203,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .compare { display: grid; gap: 16px; }
 @media (min-width: 720px) { .compare { grid-template-columns: 1fr 1fr; } }
-.compare-item { position: relative; }
+.compare-item { display: grid; gap: 10px; justify-items: start; align-content: start; }
+.compare-item .media { justify-self: stretch; }
 .compare-item .media { border-radius: 20px; }
+/* La etiqueta va encima del marco, no sobre la captura */
 .compare-tag {
-  position: absolute; top: 12px; left: 12px; z-index: 3;
   font: 500 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .12em;
   padding: 6px 10px; border-radius: 999px;
-  background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: blur(8px);
+  background: var(--surface-2); color: var(--muted);
 }
 .compare-tag.after { color: var(--c); }
 
@@ -257,6 +258,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .media.is-ready video, .media.is-ready img { opacity: 1; }
 
+/* Captura con proporción propia: el marco la adopta en vez de recortarla.
+   Fuera del carrusel se limita la altura para que las UIs verticales no crezcan sin fin. */
+.media.has-ratio { aspect-ratio: var(--ar); }
+.featured-media .media.has-ratio,
+.compare .media.has-ratio,
+.support-grid .media.has-ratio {
+  width: min(100%, calc(min(78vh, 720px) * var(--ar)));
+  margin-inline: auto;
+}
+
 /* Carousel */
 .carousel { margin-top: 32px; }
 .track {
@@ -269,18 +280,22 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   scrollbar-width: none;
 }
 .track::-webkit-scrollbar { display: none; }
+/* Todos los slides tienen la misma altura de media; el ancho sale de la proporción
+   de cada captura (--ar). Sin captura, el placeholder es ligeramente vertical. */
+.track { --slide-h: clamp(300px, 48vw, 520px); }
 .slide {
-  flex: 0 0 min(85%, 640px);
+  --ar: 4 / 5;
+  flex: 0 0 auto;
+  width: min(calc(var(--slide-h) * var(--ar)), calc(100vw - 2 * var(--gutter)));
   scroll-snap-align: start;
   background: var(--surface); border: 1px solid var(--line);
   border-radius: var(--radius); overflow: hidden;
 }
-.slide .media { border: 0; border-radius: 0; border-bottom: 1px solid var(--line); }
+.slide .media { aspect-ratio: auto; height: var(--slide-h); border: 0; border-radius: 0; border-bottom: 1px solid var(--line); }
 .slide-body { padding: 18px 20px 22px; display: grid; gap: 6px; }
 .slide-num { font: 500 12px/1 var(--mono); color: var(--c); }
 .slide h4 { font-size: 19px; font-weight: 600; }
 .slide p { color: var(--muted); font-size: 15px; line-height: 1.5; }
-@media (min-width: 900px) { .slide { flex-basis: 520px; } }
 
 .carousel-controls { margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .dots { display: flex; gap: 8px; flex-wrap: wrap; }
