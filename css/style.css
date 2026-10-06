@@ -298,12 +298,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   scroll-snap-align: start;
 }
 /* Como en apple.com: sin tarjeta, solo la captura enmarcada y el texto debajo sobre el fondo de la web.
-   Si una captura muy ancha choca con el ancho máximo, baja de alto en proporción en vez de recortarse. */
-.slide .media {
-  aspect-ratio: auto;
-  height: min(var(--slide-h), calc(var(--slide-max-w) / (var(--ar))));
-  border-radius: var(--radius);
-}
+   La altura es siempre la misma: si una captura muy ancha choca con el ancho máximo, se recorta
+   por la derecha (se conserva el principio de cada línea) en vez de bajar de alto. */
+.slide .media { aspect-ratio: auto; height: var(--slide-h); border-radius: var(--radius); }
+.slide .media img, .slide .media video { object-position: left center; }
 .slide-text { margin-top: 18px; padding-right: 12px; color: var(--muted); font-size: 16px; line-height: 1.5; }
 .slide-text strong { color: var(--text); font-weight: 600; }
 
