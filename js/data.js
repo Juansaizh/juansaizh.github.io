@@ -17,7 +17,7 @@ window.PORTFOLIO = {
   },
 
   hero: {
-    kicker: "Technical Artist & Pipeline Developer",
+    kicker: "Technical Artist · Tools & pipelines for real‑time mobile",
     title: "I build the pipeline between the artist and the real‑time app.",
     text:
       "This is a portfolio of the tools I've built over the last few years, organized by the production stages they serve, from a PDF floor plan to the real‑time app. Most of them are private: they live in the company's internal repository, where I'm the sole author.",
@@ -30,19 +30,19 @@ window.PORTFOLIO = {
     { value: "12 tools", label: "one connected pipeline", tool: "3ds Max · Unity · Deadline" },
   ],
 
-  output: { name: "Real‑time app", tools: "WebGL · Mobile" },
+  output: { name: "Real‑time app", tools: "Unity · Babylon.js · Mobile/WebGL" },
 
   stages: [
     {
       id: "author",
       name: "Author",
-      tagline: "From a PDF floor plan to a clean, bake‑ready 3ds Max interior.",
+      tagline: "From 2D reference to clean, bake‑ready 3D, with AI in the loop.",
       tools: ["3ds Max", "AI · MCP", "MaxScript", "Python"],
       featured: {
         name: "Floor Plan to 3D",
         stack: ["AI", "MCP", "3ds Max", "MaxScript", "Python"],
         lead:
-          "Five connected tools that turn a PDF floor plan into a bake‑ready 3ds Max interior. An AI skill draws the splines, and every step hands its result to the next one.",
+          "AI‑assisted procedural generation: an AI skill drives 3ds Max through MCP to turn a 2D floor plan into 3D, and four more tools build, texture and unwrap it into a bake‑ready scene, in one connected chain.",
         media: "video/fp3d-overview.mp4",
         impact: "50 min → 10 min per floor plan",
         featuresTitle: "Step by step.",
