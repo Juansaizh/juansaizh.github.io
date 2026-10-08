@@ -47,7 +47,7 @@ window.PORTFOLIO = {
         impact: "50 min → 10 min per floor plan",
         featuresTitle: "Step by step.",
         features: [
-          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors and ceiling as named splines. In early production use.", media: "img/fp3d-pdf-splines.png" },
+          { title: "PDF to splines (AI)", text: "An AI skill drives 3ds Max through MCP: it reads the PDF plan and draws walls, floors and ceiling as named splines. In early production use.", media: "img/fp3d-pdf-splines.png", ratio: "1382 / 1141" },
           { title: "Shell Builder", text: "Extrudes the walls in height segments and builds the ceiling, floors and terrace borders from the splines.", media: "img/fp3d-shell-builder.png" },
           { title: "Door & Window Generator", text: "Places, orients and instances doors, windows and curtains, and fits their geometry to each opening.", media: "img/dwg-ui.png", ratio: "322 / 262" },
           { title: "MultiMaterial Editor", text: "Sets up the scene's materials in one organized multimaterial before unwrapping.", media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280" },
