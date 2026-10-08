@@ -152,7 +152,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .topbar-cta:hover { color: var(--text); }
 @media (max-width: 719px) {
   .nav-stage .label { display: none; }
-  .topbar-cta { display: none; }
+  /* Contact se queda: en móvil es el único acceso al contacto una vez pasado el hero. */
+  .topbar-inner { gap: 10px; }
+  .nav-stage { padding: 6px 8px; }
 }
 
 /* ---------- Hero ---------- */
