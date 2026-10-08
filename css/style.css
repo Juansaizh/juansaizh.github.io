@@ -174,7 +174,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Pipeline diagram */
 .pipeline {
-  margin-top: 56px;
+  margin-top: 80px;
   display: flex; flex-direction: column; align-items: stretch;
 }
 .node a, .node > div {
@@ -426,6 +426,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .about-text { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); }
 .btn.hero-cta { margin-top: 32px; background: var(--surface-2); border-color: transparent; font-weight: 600; transition: background .2s, color .2s; }
 .btn.hero-cta:hover { background: var(--accent); color: #04121f; }
+/* En móvil no hay hover: el botón va centrado y en azul desde el principio.
+   Azul algo más oscuro que --accent para que el texto blanco se lea bien. */
+@media (max-width: 719px) {
+  .btn.hero-cta { display: flex; width: fit-content; margin: 36px auto 0; padding: 0 28px; background: #0b7ad1; color: #fff; }
+  .btn.hero-cta:hover { background: #0b7ad1; color: #fff; }
+  .pipeline { margin-top: 64px; }
+}
 
 /* ---------- Contact ---------- */
 
