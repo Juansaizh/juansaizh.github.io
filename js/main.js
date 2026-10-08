@@ -202,19 +202,18 @@
     document.getElementById("stage-nav").append(...links);
   }
 
+  // Índice tipo "tracklist" de vinilo: (01) ······ Nombre, y las tecnologías a la derecha.
   function renderPipeline() {
     const ol = document.getElementById("pipeline");
-    data.stages.forEach((s, i) => {
-      ol.append(
-        h(
-          "li",
-          { class: `node s${i + 1}` },
-          h("a", { href: `#${s.id}` }, h("span", { class: "node-num" }, pad(i + 1)), h("span", { class: "node-name" }, s.name), h("span", { class: "node-tools" }, s.tools.join(" · ")))
-        ),
-        h("li", { class: "link", style: `--i: ${i}`, "aria-hidden": "true" }, h("span", { class: "wire" }), h("span", { class: "head" }))
+    const row = (num, name, tools, href) =>
+      h(
+        "li",
+        { class: href ? "tl" : "tl out" },
+        h(href ? "a" : "div", href ? { class: "tl-row", href } : { class: "tl-row" }, h("span", { class: "tl-num" }, `(${num})`), h("span", { class: "tl-dots", "aria-hidden": "true" }), h("span", { class: "tl-name" }, name)),
+        h("span", { class: "tl-tools" }, tools)
       );
-    });
-    ol.append(h("li", { class: "node out" }, h("div", {}, h("span", { class: "node-num" }, "→"), h("span", { class: "node-name" }, data.output.name), h("span", { class: "node-tools" }, data.output.tools))));
+    data.stages.forEach((s, i) => ol.append(row(pad(i + 1), s.name, s.tools.join(" · "), `#${s.id}`)));
+    ol.append(row(" → ", data.output.name, data.output.tools));
   }
 
   function renderImpact() {
@@ -456,22 +455,6 @@
     });
   }
 
-  // ---------- Pipeline: las flechas se encienden en secuencia al entrar en pantalla ----------
-
-  function initPipelineLights() {
-    const ol = document.getElementById("pipeline");
-    if (reducedMotion || !("IntersectionObserver" in window)) return ol.classList.add("is-on");
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries.some((e) => e.isIntersecting)) return;
-        ol.classList.add("is-on");
-        io.disconnect();
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(ol);
-  }
-
   // ---------- Barra superior flotante tras pasar las cifras de impacto ----------
 
   function initFloatingNav() {
@@ -544,7 +527,6 @@
   renderAbout();
   initMedia();
   initReveal();
-  initPipelineLights();
   initShine();
   initScrollSpy();
   initFloatingNav();
