@@ -409,6 +409,7 @@
         const i = byParent.get(el.parentElement) || 0;
         byParent.set(el.parentElement, i + 1);
         el.style.setProperty("--reveal-delay", `${Math.min(i, 6) * STAGGER}ms`);
+        el.dataset.revealGroup = "";
         targets.push(el);
       });
     });
@@ -418,8 +419,13 @@
       (entries) => {
         for (const e of entries) {
           if (!e.isIntersecting) continue;
-          e.target.classList.add("is-in");
-          io.unobserve(e.target);
+          // Un grupo (p. ej. el índice) entra completo en cuanto asoma cualquiera de sus piezas,
+          // para que no quede media lista a la espera del scroll.
+          const els = "revealGroup" in e.target.dataset ? [...e.target.parentElement.children].filter((c) => "revealGroup" in c.dataset) : [e.target];
+          els.forEach((el) => {
+            el.classList.add("is-in");
+            io.unobserve(el);
+          });
         }
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
