@@ -177,7 +177,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* Pipeline: índice tipo "tracklist" de vinilo, centrado. (01) ······ Nombre y, en la
    línea de debajo, las tecnologías. En escritorio aparecen con un fundido al pasar el
    ratón (su hueco está siempre reservado, así nada se mueve) y el resto de filas se
-   atenúa. En móvil no hay hover: se ven siempre. */
+   atenúa. En móvil no hay hover y cada etapa ya las muestra en su apartado: no se enseñan. */
 .pipeline { margin: 80px auto 0; max-width: 880px; }
 .tl { display: flex; flex-direction: column; gap: 4px; padding: 10px 0 8px; }
 .tl-row {
@@ -187,11 +187,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .tl-num { flex: none; font: 500 13px/1 var(--mono); color: var(--faint); transition: color .3s; }
 .tl-dots { flex: 1 1 auto; min-width: 24px; margin-top: 4px; border-bottom: 1px dotted color-mix(in srgb, var(--faint) 45%, transparent); }
 .tl-name { flex: none; font-size: clamp(22px, 2.6vw, 30px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
-.tl-tools { min-height: 20px; font: 400 12px/20px var(--mono); color: var(--muted); text-align: right; transition: opacity .4s ease; }
+.tl-tools { display: none; min-height: 20px; font: 400 12px/20px var(--mono); color: var(--muted); text-align: right; transition: opacity .4s ease; }
 .tl.out .tl-row { color: var(--faint); }
 
 @media (min-width: 900px) {
-  .tl-tools { font-size: 13px; opacity: 0; }
+  .tl-tools { display: block; font-size: 13px; opacity: 0; }
   .tl:hover .tl-tools, .tl:focus-within .tl-tools { opacity: 1; }
   .pipeline:hover .tl:not(:hover) .tl-row,
   .pipeline:focus-within .tl:not(:focus-within) .tl-row { color: var(--faint); }
