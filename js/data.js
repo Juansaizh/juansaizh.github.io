@@ -135,7 +135,7 @@ window.PORTFOLIO = {
           features: [
             { title: "Unity export path", text: "Finds the Unity project path and exports there directly.", media: "video/oce-unity-path.mp4" },
             { title: "Batch export", text: "Exports every selected object as its own FBX.", media: "video/oce-batch-export.mp4" },
-            { title: "Scene validation", text: "Detects scene errors and fixes them before exporting.", media: "img/oce-validation-closeup.png", ratio: "626 / 310" },
+            { title: "Scene validation", text: "Detects scene errors and fixes them before exporting.", media: "img/oce-validation-closeup.png", ratio: "1728 / 942" },
           ],
         },
       ],
