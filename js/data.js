@@ -132,6 +132,7 @@ window.PORTFOLIO = {
           text: "Exports hundreds of FBX files, fast, straight into the Unity project.",
           bullets: ["Connects to the Unity export path on its own", "Batch export based on the scene selection", "Scene validation: detects and fixes scene errors"],
           media: "video/oce-ui.mp4",
+          ratio: "1280 / 720",
           features: [
             { title: "Unity export path", text: "Finds the Unity project path and exports there directly.", media: "video/oce-unity-path.mp4" },
             { title: "Batch export", text: "Exports every selected object as its own FBX.", media: "video/oce-batch-export.mp4" },
