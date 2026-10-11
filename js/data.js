@@ -153,11 +153,12 @@ window.PORTFOLIO = {
         lead:
           "Sets up location scenes automatically: it analyzes the model topology and places assets, cameras and materials based on multiple criteria.",
         media: "video/sls-ui.mp4",
+        ratio: "1800 / 1200",
         features: [
-          { title: "Topology analysis", text: "Reads the model to decide where each element belongs.", media: "video/sls-topology.mp4" },
+          { title: "Topology analysis", text: "Reads the model to decide where each element belongs.", media: "img/sls-topology.png", ratio: "1800 / 1200" },
           { title: "Asset placement", text: "Places multiple assets from configurable criteria.", media: "img/sls-assets.png", ratio: "1600 / 842" },
-          { title: "Cameras", text: "Positions the cameras of the interactive app automatically.", media: "video/sls-cameras.mp4" },
-          { title: "Materials", text: "Assigns materials by rule across the whole scene.", media: "video/sls-materials.mp4" },
+          { title: "Cameras", text: "Positions the cameras of the interactive app automatically.", media: "img/sls-cameras.png", ratio: "1800 / 1200" },
+          { title: "Materials", text: "Assigns materials by rule across the whole scene.", media: "img/sls-materials.png", ratio: "1800 / 1200" },
         ],
       },
       support: [
