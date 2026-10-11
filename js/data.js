@@ -209,7 +209,7 @@ window.PORTFOLIO = {
           stack: ["Unity", "C#"],
           text: "Automation tool that sets up multiple baking scenes at once for a single project.",
           media: "img/sbs-ui.png",
-          ratio: "680 / 386",
+          ratio: "680 / 342",
         },
         {
           name: "Batch Baking",
