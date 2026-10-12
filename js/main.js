@@ -189,7 +189,8 @@
       { class: "carousel" },
       heading && h("h4", { class: "wrap carousel-head" }, heading),
       track,
-      h("div", { class: "wrap carousel-controls" }, dots, h("div", { class: "arrows" }, prev, next))
+      // Con una sola tarjeta no hay nada que navegar.
+      items.length > 1 && h("div", { class: "wrap carousel-controls" }, dots, h("div", { class: "arrows" }, prev, next))
     );
   }
 
@@ -292,12 +293,53 @@
             h("span", { class: "stage-num shine", "aria-hidden": "true" }, pad(i + 1)),
             h("div", {}, h("h2", { id: `${s.id}-title` }, s.name), h("p", { class: "stage-tagline" }, s.tagline))
           ),
-          featuredBlock(s.featured),
+          s.featured && featuredBlock(s.featured),
           s.support?.length && h("h3", { class: "wrap support-head" }, `More in ${s.name}.`),
           (s.support || []).map(supportBlock)
         )
       );
     });
+  }
+
+  // ---------- Versión pública: sin placeholders ----------
+
+  // Lo que aún no tiene captura se oculta: slides sueltos, y bloques enteros si falta su
+  // media principal. Al subir el archivo vuelve a aparecer solo. Con ?drafts en la URL (o
+  // window.PORTFOLIO_SHOW_DRAFTS) se ve todo, placeholders incluidos.
+  const showDrafts = new URLSearchParams(location.search).has("drafts") || window.PORTFOLIO_SHOW_DRAFTS === true;
+
+  async function hideDrafts() {
+    const paths = new Set();
+    const collect = (p) => {
+      if (p.compare) [p.compare.before.media, p.compare.after.media].forEach((m) => paths.add(m));
+      else paths.add(p.media);
+      (p.features || []).forEach((f) => paths.add(f.media));
+    };
+    data.stages.forEach((s) => [s.featured, ...(s.support || [])].forEach(collect));
+
+    // Si la comprobación falla por la red (p. ej. abriendo el HTML en local), se da por existente.
+    const exists = new Map(
+      await Promise.all(
+        [...paths].map(async (p) => {
+          try {
+            const r = await fetch(ASSETS + p, { method: "HEAD", cache: "no-cache" });
+            return [p, r.ok];
+          } catch {
+            return [p, true];
+          }
+        })
+      )
+    );
+    const ok = (m) => exists.get(m) !== false;
+    const prune = (p) => {
+      const main = p.compare ? [p.compare.before.media, p.compare.after.media] : [p.media];
+      if (!main.every(ok)) return null;
+      const features = (p.features || []).filter((f) => ok(f.media));
+      return { ...p, features: features.length ? features : null };
+    };
+    data.stages = data.stages
+      .map((s) => ({ ...s, featured: prune(s.featured), support: (s.support || []).map(prune).filter(Boolean) }))
+      .filter((s) => s.featured || s.support.length);
   }
 
   // ---------- Contacto: copiar el email al portapapeles ----------
@@ -525,17 +567,20 @@
     ["top", "about", "contact"].forEach((id) => document.getElementById(id) && clear.observe(document.getElementById(id)));
   }
 
-  renderHero();
-  renderNav();
-  renderPipeline();
-  renderImpact();
-  renderStages();
-  renderAbout();
-  initMedia();
-  initReveal();
-  initShine();
-  initScrollSpy();
-  initFloatingNav();
-  initThemeToggle();
-  document.getElementById("year").textContent = new Date().getFullYear();
+  (async () => {
+    if (!showDrafts) await hideDrafts();
+    renderHero();
+    renderNav();
+    renderPipeline();
+    renderImpact();
+    renderStages();
+    renderAbout();
+    initMedia();
+    initReveal();
+    initShine();
+    initScrollSpy();
+    initFloatingNav();
+    initThemeToggle();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
 })();
