@@ -292,7 +292,7 @@
             h("span", { class: "stage-num shine", "aria-hidden": "true" }, pad(i + 1)),
             h("div", {}, h("h2", { id: `${s.id}-title` }, s.name), h("p", { class: "stage-tagline" }, s.tagline))
           ),
-          featuredBlock(s.featured),
+          [].concat(s.featured).map(featuredBlock),
           s.support?.length && h("h3", { class: "wrap support-head" }, `More in ${s.name}.`),
           (s.support || []).map(supportBlock)
         )

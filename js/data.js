@@ -96,43 +96,9 @@ window.PORTFOLIO = {
           ],
         },
         {
-          name: "Door & Window Generator",
-          stack: ["3ds Max", "MaxScript", "Qt"],
-          text: "Analyzes the model topology to place doors, windows and curtains automatically, with controls to iterate fast.",
-          bullets: ["Detects window orientation", "Picks the most suitable object", "Fits each object precisely"],
-          media: "img/dwg-ui.png",
-          ratio: "322 / 262",
-          features: [
-            { title: "Merges missing base objects", text: "When the base objects it needs are missing from the scene, it offers to merge them in.", media: "img/dwg-merge.png", ratio: "427 / 220" },
-          ],
-        },
-      ],
-    },
-
-    {
-      id: "bake-export",
-      name: "Bake & Export",
-      tagline: "Lighting baked in 3ds Max, delivered as lightweight real‑time assets.",
-      tools: ["3ds Max", "MaxScript", "C#"],
-      featured: {
-        name: "Lightmapping & Web Exporter",
-        stack: ["3ds Max", "MaxScript", "C#"],
-        lead:
-          "An in‑house solution built to control the final result and cut dependencies on third‑party tools. Custom materials, light baking and glTF export for real‑time visualization, all inside 3ds Max.",
-        media: "img/lwe-ui.png",
-        ratio: "510 / 585",
-        features: [
-          { title: "Lightmap baking", text: "Full control over texel density and an optimal texture atlas.", media: "video/lwe-lightmaps.mp4" },
-          { title: "Furniture & camera placement", text: "Places furniture and cameras for the interactive app and writes them to JSON.", media: "video/lwe-placement-json.mp4" },
-          { title: "Tagging with auto‑tag", text: "Tag assets by hand or let auto‑tagging do it for you.", media: "video/lwe-tagging.mp4" },
-          { title: "Custom glTF exporter", text: "Exports glTF, lightmaps and JSON, including custom material attributes.", media: "video/lwe-gltf-export.mp4" },
-        ],
-      },
-      support: [
-        {
           name: "OneClick Export",
           stack: ["3ds Max", "MaxScript", "Qt"],
-          text: "Exports hundreds of FBX files, fast, straight into the Unity project.",
+          text: "The bridge from 3ds Max to Unity: exports hundreds of FBX files, fast, straight into the Unity project.",
           bullets: ["Connects to the Unity export path on its own", "Batch export based on the scene selection", "Scene validation: detects and fixes scene errors"],
           media: "video/oce-ui.mp4",
           ratio: "1600 / 900",
@@ -142,12 +108,48 @@ window.PORTFOLIO = {
             { title: "Scene validation", text: "Detects scene errors and fixes them before exporting.", media: "img/oce-validation-closeup.png", ratio: "1152 / 942" },
           ],
         },
+        // Door & Window Generator oculto temporalmente; descomentar para mostrarlo de nuevo.
+        // {
+        //   name: "Door & Window Generator",
+        //   stack: ["3ds Max", "MaxScript", "Qt"],
+        //   text: "Analyzes the model topology to place doors, windows and curtains automatically, with controls to iterate fast.",
+        //   bullets: ["Detects window orientation", "Picks the most suitable object", "Fits each object precisely"],
+        //   media: "img/dwg-ui.png",
+        //   ratio: "322 / 262",
+        //   features: [
+        //     { title: "Merges missing base objects", text: "When the base objects it needs are missing from the scene, it offers to merge them in.", media: "img/dwg-merge.png", ratio: "427 / 220" },
+        //   ],
+        // },
       ],
     },
 
     {
-      id: "assemble",
-      name: "Assemble",
+      id: "bake",
+      name: "Bake",
+      tagline: "Lighting baked in Unity, dozens of scenes at once.",
+      tools: ["Unity", "C#"],
+      // Varias herramientas destacadas: se muestran una detrás de otra.
+      featured: [
+        {
+          name: "Setup Baking Scenes",
+          stack: ["Unity", "C#"],
+          lead: "Automation tool that sets up multiple baking scenes at once for a single project.",
+          media: "img/sbs-ui.png",
+          ratio: "680 / 342",
+        },
+        {
+          name: "Batch Baking",
+          stack: ["Unity", "C#"],
+          lead: "Bakes multiple scenes at once and exports each one to its own folder, with extra control options.",
+          media: "img/bb-ui.png",
+          ratio: "720 / 882",
+        },
+      ],
+    },
+
+    {
+      id: "assemble-export",
+      name: "Assemble & Export",
       tagline: "Unity scenes built from rules instead of by hand.",
       tools: ["Unity", "C#"],
       featured: {
@@ -191,10 +193,10 @@ window.PORTFOLIO = {
     },
 
     {
-      id: "bake-ship",
-      name: "Bake & Ship",
-      tagline: "Dozens of scenes baked, processed and released without babysitting.",
-      tools: ["Unity", "Deadline", "Python", "PowerShell"],
+      id: "post-ship",
+      name: "Post‑Production & Ship",
+      tagline: "Dozens of scenes processed and released without babysitting.",
+      tools: ["Deadline", "Python", "PowerShell"],
       featured: {
         name: "Render Farm Post‑Process",
         stack: ["Deadline", "Python", "PowerShell"],
@@ -210,18 +212,18 @@ window.PORTFOLIO = {
       },
       support: [
         {
-          name: "Setup Baking Scenes",
-          stack: ["Unity", "C#"],
-          text: "Automation tool that sets up multiple baking scenes at once for a single project.",
-          media: "img/sbs-ui.png",
-          ratio: "680 / 342",
-        },
-        {
-          name: "Batch Baking",
-          stack: ["Unity", "C#"],
-          text: "Bakes multiple scenes at once and exports each one to its own folder, with extra control options.",
-          media: "img/bb-ui.png",
-          ratio: "720 / 882",
+          name: "Lightmapping & Web Exporter",
+          stack: ["3ds Max", "MaxScript", "C#"],
+          text:
+            "An in‑house alternative to the Unity route, built to control the final result and cut dependencies on third‑party tools. Custom materials, light baking and glTF export for real‑time visualization, all inside 3ds Max.",
+          media: "img/lwe-ui.png",
+          ratio: "510 / 585",
+          features: [
+            { title: "Lightmap baking", text: "Full control over texel density and an optimal texture atlas.", media: "video/lwe-lightmaps.mp4" },
+            { title: "Furniture & camera placement", text: "Places furniture and cameras for the interactive app and writes them to JSON.", media: "video/lwe-placement-json.mp4" },
+            { title: "Tagging with auto‑tag", text: "Tag assets by hand or let auto‑tagging do it for you.", media: "video/lwe-tagging.mp4" },
+            { title: "Custom glTF exporter", text: "Exports glTF, lightmaps and JSON, including custom material attributes.", media: "video/lwe-gltf-export.mp4" },
+          ],
         },
       ],
     },
