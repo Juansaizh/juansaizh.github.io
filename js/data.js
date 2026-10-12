@@ -43,8 +43,8 @@ window.PORTFOLIO = {
         stack: ["AI", "MCP", "3ds Max", "MaxScript", "Python"],
         lead:
           "AI‑assisted procedural generation: an AI skill drives 3ds Max through MCP to turn a 2D floor plan into 3D, and four more tools build, texture and unwrap it into a bake‑ready scene, in one connected chain.",
-        media: "img/fp3d-pdf-splines.png", // provisional: luego video/fp3d-overview.mp4
-        ratio: "1382 / 1141",
+        media: "video/fp3d-overview.mp4",
+        ratio: "1080 / 764",
         impact: "50 min → 10 min per floor plan",
         featuresTitle: "Step by step.",
         features: [
