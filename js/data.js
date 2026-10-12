@@ -128,28 +128,27 @@ window.PORTFOLIO = {
       name: "Bake",
       tagline: "Lighting baked in Unity, dozens of scenes at once.",
       tools: ["Unity", "C#"],
-      // Varias herramientas destacadas: se muestran una detrás de otra.
-      featured: [
+      featured: {
+        name: "Batch Baking",
+        stack: ["Unity", "C#"],
+        lead: "Bakes multiple scenes at once and exports each one to its own folder, with extra control options.",
+        media: "img/bb-ui.png",
+        ratio: "720 / 882",
+      },
+      support: [
         {
           name: "Setup Baking Scenes",
           stack: ["Unity", "C#"],
-          lead: "Automation tool that sets up multiple baking scenes at once for a single project.",
+          text: "Automation tool that sets up multiple baking scenes at once for a single project.",
           media: "img/sbs-ui.png",
           ratio: "680 / 342",
-        },
-        {
-          name: "Batch Baking",
-          stack: ["Unity", "C#"],
-          lead: "Bakes multiple scenes at once and exports each one to its own folder, with extra control options.",
-          media: "img/bb-ui.png",
-          ratio: "720 / 882",
         },
       ],
     },
 
     {
-      id: "assemble-export",
-      name: "Assemble & Export",
+      id: "assemble",
+      name: "Assemble",
       tagline: "Unity scenes built from rules instead of by hand.",
       tools: ["Unity", "C#"],
       featured: {
