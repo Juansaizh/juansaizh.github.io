@@ -61,10 +61,13 @@ window.PORTFOLIO = {
           stack: ["3ds Max", "Python", "Qt"],
           text:
             "As multimaterials grow complex, the native editor becomes a bottleneck. This tool replaces it with a UI built for teams: organized, fast and hard to break.",
-          compare: {
-            before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "470 / 487" },
-            after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
-          },
+          // Before/after oculto temporalmente; para restaurarlo, descomentar y quitar media/ratio.
+          // compare: {
+          //   before: { media: "img/mme-native-ui.png", label: "Native 3ds Max UI", ratio: "470 / 487" },
+          //   after: { media: "img/mme-upgraded-ui.png", ratio: "3000 / 2280", label: "MultiMaterial Editor" },
+          // },
+          media: "img/mme-upgraded-ui.png",
+          ratio: "3000 / 2280",
           features: [
             { title: "Drag & drop reordering", text: "Reorder sub‑materials in a list instead of editing slots one by one.", media: "img/mme-drag-reorder.png", ratio: "1380 / 868" },
             { title: "Automatic ID renumbering", text: "Material IDs renumber themselves every time the list changes.", media: "img/mme-auto-renumber.png", ratio: "1460 / 972" },
